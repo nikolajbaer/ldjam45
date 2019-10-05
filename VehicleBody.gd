@@ -5,8 +5,9 @@ onready var throttle_sound = $EngineThrottle
 onready var lspray = $LSpray
 onready var rspray = $RSpray
 
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,21 +28,19 @@ func _process(delta):
 	
 	if Input.is_action_pressed('brake'):
 		self.brake = 1000
-		if self.linear_velocity.length() <= 0:
-			self.engine_force = -1000
-	else:
-		self.brake = 0
-		if self.engine_force < 0:
-			self.engine_force = 0
+		self.engine_force = -1000
 	
 	if Input.is_action_pressed("left"):
-		self.set_steering(.5)
+		if self.steering < .5:
+			self.steering += 0.01
 	elif Input.is_action_pressed("right"):
-		self.set_steering(-.5)
+		if self.steering > -.5:
+			self.steering -= 0.01
 	else:
-		self.set_steering(0)
-
-
+		if self.steering < -0.01:
+			self.set_steering( self.steering + 0.01 )
+		elif self.steering > 0.01:
+			self.set_steering( self.steering - 0.01 )
 
 func _on_VehicleBody_body_entered(body):
 	if body.get_collision_layer_bit(1):
