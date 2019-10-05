@@ -2,20 +2,20 @@ extends Camera
 
 # Member variables
 var collision_exception = []
-export var min_distance = 10
-export var max_distance = 20.0
+export var min_distance = 20
+export var max_distance = 30.0
 export var angle_v_adjust = 0.0
 export var autoturn_ray_aperture = 25
 export var autoturn_speed = 50
-var max_height = 10.0
-var min_height = 5
+var max_height = 1.0
+var min_height = 0.5
 
 
 func _physics_process(dt):
-	var target = get_parent().get_global_transform().origin
+	var target = get_parent().get_parent().get_global_transform().origin
 	var pos = get_global_transform().origin
 	var up = Vector3(0, 1, 0)
-	
+	target.y += 5
 	var delta = pos - target
 	
 	# Regular delta follow

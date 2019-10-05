@@ -30,10 +30,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 shape = SubResource( 3 )
 
 [node name="VehicleBody" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.747102, 10.6905, 19 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.747102, 5.46818, 19 )
 
 [node name="VehicleBody2" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28.9173, 10.6905, 19 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28.9173, 5.46818, 19 )
 body_color = Color( 0.172549, 1, 0, 1 )
 player = "p2"
 
@@ -64,6 +64,7 @@ light_energy = 0.8
 shadow_enabled = true
 
 [node name="Ramps" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="StaticBody" parent="Ramps" instance=ExtResource( 4 )]
 transform = Transform( 2.07921, -4.87725, -0.145147, -3.29547, -2.06348e-07, -1.88828, 9.2096, 1.10111, -0.642913, -16.3554, 0, -66.6819 )
@@ -72,6 +73,7 @@ transform = Transform( 2.07921, -4.87725, -0.145147, -3.29547, -2.06348e-07, -1.
 transform = Transform( -9.38893, -0.526343, 0.655432, -3.29547, -2.06348e-07, -1.88828, 0.993891, -4.97222, -0.0693819, -75.1154, 0, -146.492 )
 
 [node name="Obstacles" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="StaticBody" parent="Obstacles" instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-07, 0, 2, 0, 5, 0, -10, 0, -8.74228e-08, -50.7334, 4.02066, 0 )
