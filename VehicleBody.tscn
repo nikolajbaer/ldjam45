@@ -69,7 +69,6 @@ material/5 = null
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10114, -0.361166, -1.65981 )
 use_as_traction = true
-wheel_roll_influence = 0.5
 wheel_radius = 1.0
 suspension_travel = 20.0
 suspension_stiffness = 3.0
@@ -83,7 +82,6 @@ material/0 = SubResource( 7 )
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03254, -0.361166, -1.65981 )
 use_as_traction = true
-wheel_roll_influence = 0.5
 wheel_radius = 1.0
 suspension_travel = 20.0
 suspension_stiffness = 3.0
@@ -97,7 +95,6 @@ material/0 = SubResource( 7 )
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10114, -0.361166, 2.06677 )
 use_as_steering = true
-wheel_roll_influence = 0.5
 wheel_radius = 1.0
 suspension_travel = 20.0
 suspension_stiffness = 3.0
@@ -111,7 +108,6 @@ material/0 = SubResource( 7 )
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03254, -0.361166, 2.06677 )
 use_as_steering = true
-wheel_roll_influence = 0.5
 wheel_radius = 1.0
 suspension_travel = 20.0
 suspension_stiffness = 3.0
@@ -156,3 +152,4 @@ script = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 [connection signal="body_entered" from="VehicleBody" to="VehicleBody" method="_on_VehicleBody_body_entered"]
+
