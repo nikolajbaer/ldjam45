@@ -7,8 +7,13 @@ const STEER_LIMIT = 0.4
 var steer_angle = 0
 var steer_target = 0
 
+var throttle_up = true
+var throttle_down = false
+
+
 onready var idle_sound = $EngineIdle
-onready var throttle_sound = $EngineThrottle
+onready var throttle_sound = $EngineThrottleStart
+onready var throttle_loop = $EngineThrottleLoop
 onready var lbackwheel = $BackVehicleWheelL
 onready var lspray = $BackVehicleWheelL/LSpray
 onready var rbackwheel = $BackVehicleWheelR
@@ -28,8 +33,7 @@ func update_spray():
 						or lbackwheel.get_skidinfo() < 0.5
 	rspray.emitting =  (engine_force > 0 and rbackwheel.is_in_contact()) \
 						or rbackwheel.get_skidinfo() < 0.5
-
-
+	
 func _physics_process(delta):
 	var fwd_mps = transform.basis.xform_inv(linear_velocity).x
 
@@ -44,11 +48,16 @@ func _physics_process(delta):
 	if Input.is_action_pressed(player+"_engine"):
 		engine_force = engine_force_value
 		idle_sound.stop()
-		if not throttle_sound.playing:
+		if not throttle_sound.playing && throttle_up:
+			throttle_up = false
 			throttle_sound.play()
+		elif not throttle_sound.playing && not throttle_loop.playing:
+			throttle_loop.play()
 	else:
 		engine_force = 0
 		throttle_sound.stop()
+		throttle_loop.stop()
+		throttle_up = true
 		if not idle_sound.playing:
 			pass #idle_sound.play()
 			
