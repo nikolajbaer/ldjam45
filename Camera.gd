@@ -2,8 +2,8 @@ extends Camera
 
 # Member variables
 var collision_exception = []
-export var min_distance = 20
-export var max_distance = 30.0
+export var min_distance = 10
+export var max_distance = 20.0
 export var angle_v_adjust = 0.0
 export var autoturn_ray_aperture = 25
 export var autoturn_speed = 50

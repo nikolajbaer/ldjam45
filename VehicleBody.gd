@@ -21,13 +21,16 @@ onready var rspray = $BackVehicleWheelR/RSpray
 
 export var engine_force_value = 400
 
-var player = "p1"
+var player
 
 func set_body_color(body_color):
 	var mat = $hearse.get_surface_material(0).duplicate()
 	mat.albedo_color = body_color
 	$hearse.set_surface_material(0,mat)
 	
+func set_player(p):
+	player = p
+
 func update_spray():
 	lspray.emitting =  (engine_force > 0 and lbackwheel.is_in_contact()) \
 						or lbackwheel.get_skidinfo() < 0.5
@@ -37,7 +40,15 @@ func update_spray():
 func _physics_process(delta):
 	var fwd_mps = transform.basis.xform_inv(linear_velocity).x
 
+	if Input.is_action_pressed(player+"_reset"):
+		var reset = Transform()
+		reset.translated( translation - get_parent().translation )
+		reset.translated(Vector3(0,0,3))
+		transform = reset
+		linear_velocity = Vector3(0,0,0)
+		angular_velocity = Vector3(0,0,0)
 		
+
 	if Input.is_action_pressed(player+"_left"):
 		steer_target = STEER_LIMIT
 	elif Input.is_action_pressed(player+"_right"):
