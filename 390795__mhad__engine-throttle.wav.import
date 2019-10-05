@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/390795__mhad__engine-throttle.wav-d31b6e8df8b0b9a8acf6eb6b9843b219.sample"
+
+[deps]
+
+source_file="res://390795__mhad__engine-throttle.wav"
+dest_files=[ "res://.import/390795__mhad__engine-throttle.wav-d31b6e8df8b0b9a8acf6eb6b9843b219.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,135 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://VehicleBody.gd" type="Script" id=1]
+[ext_resource path="res://hearse.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://390787__mhad__engine-idle.wav" type="AudioStream" id=3]
+[ext_resource path="res://390795__mhad__engine-throttle.wav" type="AudioStream" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2.57165, 1.45505, 3.54888 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.819608, 0.341176, 0.847059, 1 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.109804, 0.321569, 0.72549, 1 )
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0.937255, 0.0235294, 0.0235294, 1 )
+
+[sub_resource type="CylinderMesh" id=4]
+height = 0.75
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+spread = 16.0
+gravity = Vector3( 0, -6, 0 )
+initial_velocity = 20.0
+angular_velocity = 1.0842e-19
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.188235, 0.117647, 0.0235294, 1 )
+
+[sub_resource type="CubeMesh" id=10]
+material = SubResource( 9 )
+size = Vector3( 0.1, 0.1, 0.1 )
+
+[node name="VehicleBody" type="VehicleBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.93215, 0 )
+mass = 500.0
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.202166, 0 )
+shape = SubResource( 1 )
+
+[node name="hearse" type="MeshInstance" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.644444, 0.452353 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 6 )
+material/1 = SubResource( 7 )
+material/2 = SubResource( 8 )
+material/3 = null
+material/4 = null
+material/5 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1, 3.24022e-08, -8.11963e-08, 0, 0.928777, 0.370638, 8.74228e-08, 0.370638, -0.928777, 0, 9.57987, -14.2566 )
+far = 1000.0
+
+[node name="BackVehicleWheelL" type="VehicleWheel" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10114, -0.361166, -1.65981 )
+use_as_traction = true
+wheel_radius = 1.0
+suspension_travel = 20.0
+suspension_stiffness = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="BackVehicleWheelL"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="BackVehicleWheelR" type="VehicleWheel" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03254, -0.361166, -1.65981 )
+use_as_traction = true
+wheel_radius = 1.0
+suspension_travel = 20.0
+suspension_stiffness = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="BackVehicleWheelR"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="FrontVehicleWheelL" type="VehicleWheel" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10114, -0.361166, 2.06677 )
+use_as_steering = true
+wheel_radius = 1.0
+suspension_travel = 20.0
+suspension_stiffness = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="FrontVehicleWheelL"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="FrontVehicleWheelR" type="VehicleWheel" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03254, -0.361166, 2.06677 )
+use_as_steering = true
+wheel_radius = 1.0
+suspension_travel = 20.0
+suspension_stiffness = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="FrontVehicleWheelR"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="EngineIdle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="EngineThrottle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="LSpray" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.953508, 0.301368, 0, -0.301368, -0.953508, 2.09685, -1.06604, -2.59164 )
+emitting = false
+amount = 16
+local_coords = false
+process_material = SubResource( 11 )
+draw_pass_1 = SubResource( 10 )
+
+[node name="RSpray" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.953508, 0.301368, 0, -0.301368, -0.953508, -2.14605, -1.06604, -2.59164 )
+emitting = false
+amount = 16
+local_coords = false
+process_material = SubResource( 11 )
+draw_pass_1 = SubResource( 10 )

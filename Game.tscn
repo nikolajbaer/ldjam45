@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://VehicleBody.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cone.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Block.tscn" type="PackedScene" id=3]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 1000, 1000 )
+
+[sub_resource type="SpatialMaterial" id=3]
+vertex_color_use_as_albedo = true
+albedo_color = Color( 0.439216, 0.34902, 0.247059, 1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 500, 1, 500 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Ground" type="StaticBody" parent="."]
+editor/display_folded = true
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+shape = SubResource( 2 )
+
+[node name="VehicleBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12, 1.51053, 19 )
+
+[node name="Cones" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="Spatial" parent="Cones" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7331, 0.218832, 0 )
+
+[node name="Spatial4" parent="Cones" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7331, 0.218832, -43.3257 )
+
+[node name="Spatial6" parent="Cones" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7331, 0.218832, -90.6896 )
+
+[node name="Spatial2" parent="Cones" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1388, 0.218832, -24.6262 )
+
+[node name="Spatial3" parent="Cones" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1388, 0.218832, -67.9519 )
+
+[node name="Spatial5" parent="Cones" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1388, 0.218832, -115.316 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.908283, -0.192642, 0.371362, -0.418355, -0.418242, 0.806258, 0, -0.887672, -0.460476, 0, 20.2116, 0 )
+light_energy = 0.8
+shadow_enabled = true
+
+[node name="Ramps" type="Spatial" parent="."]
+
+[node name="StaticBody" parent="Ramps" instance=ExtResource( 3 )]
+transform = Transform( 2.07921, -4.87725, -0.145147, -3.29547, -2.06348e-07, -1.88828, 9.2096, 1.10111, -0.642913, -16.3554, 0, -66.6819 )
+
+[node name="Obstacles" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="StaticBody" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-07, 0, 2, 0, 5, 0, -10, 0, -8.74228e-08, -50.7334, 4.02066, 0 )
+
+[node name="StaticBody9" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( -0.947137, 0, -1.99101, 0, 5, 0, 9.95505, 0, -0.189427, 54.3696, 4.02066, -79.7251 )
+
+[node name="StaticBody5" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( -8.79316, 0, -0.952478, 0, 5, 0, 4.76239, 0, -1.75863, 54.7166, 4.02066, 37.9007 )
+
+[node name="StaticBody13" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( 9.20469, 0, 0.781629, 0, 5, 0, -3.90815, 0, 1.84094, -47.0166, 4.02066, -127.443 )
+
+[node name="StaticBody3" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( -9.53814, 0, 0.600796, 0, 5, 0, -3.00398, 0, -1.90763, -10.4568, 4.02066, 55.8747 )
+
+[node name="StaticBody14" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( 9.21074, 0, -0.778773, 0, 5, 0, 3.89387, 0, 1.84215, 19.5661, 4.02066, -139.163 )
+
+[node name="StaticBody8" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( 1.90099, 0, -1.96353, 0, 5, 0, 9.81765, 0, 0.380197, 84.6668, 4.02066, -24.1248 )
+
+[node name="StaticBody15" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( -0.962575, 0, 1.99071, 0, 5, 0, -9.95356, 0, -0.192515, -82.7069, 4.02066, -68.5329 )
+
+[node name="StaticBody2" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( -5.1788, 0, 1.71091, 0, 5, 0, -8.55454, 0, -1.03576, -39.2046, 4.02066, 32.5617 )
+
+[node name="StaticBody10" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( 4.34528, 0, -1.80132, 0, 5, 0, 9.00658, 0, 0.869056, 45.9767, 4.02066, -113.232 )
+
+[node name="StaticBody6" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( -5.0558, 0, -1.72556, 0, 5, 0, 8.6278, 0, -1.01116, 77.8582, 4.02066, 12.2561 )
+
+[node name="StaticBody16" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( 5.85024, 0, 1.62203, 0, 5, 0, -8.11016, 0, 1.17005, -72.4831, 4.02066, -104.106 )
+
+[node name="StaticBody4" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( -9.71513, 0, -0.473969, 0, 5, 0, 2.36984, 0, -1.94303, 24.0643, 4.02066, 54.6599 )
+
+[node name="StaticBody11" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( 9.89592, 0, 0.287807, 0, 5, 0, -1.43903, 0, 1.97918, -14.9148, 4.02066, -141.224 )
+
+[node name="StaticBody7" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( 6.71057, 0, -1.48281, 0, 5, 0, 7.41406, 0, 1.34211, 67.1584, 4.02066, -53.9012 )
+
+[node name="StaticBody12" parent="Obstacles" instance=ExtResource( 3 )]
+transform = Transform( -5.97819, 0, 1.60326, 0, 5, 0, -8.01632, 0, -1.19564, -68.0974, 4.02066, -37.2322 )

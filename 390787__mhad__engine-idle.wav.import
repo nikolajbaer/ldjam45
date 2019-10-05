@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/390787__mhad__engine-idle.wav-ec9d0dd8bc388b973bc05c855977b910.sample"
+
+[deps]
+
+source_file="res://390787__mhad__engine-idle.wav"
+dest_files=[ "res://.import/390787__mhad__engine-idle.wav-ec9d0dd8bc388b973bc05c855977b910.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0
