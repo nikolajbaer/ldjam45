@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://VehicleBodyBase.gd" type="Script" id=1]
 [ext_resource path="res://VehicleBody.gd" type="Script" id=2]
 [ext_resource path="res://hearse.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://Wheel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://390787__mhad__engine-idle.wav" type="AudioStream" id=5]
-[ext_resource path="res://390795__mhad__engine-throttle.wav" type="AudioStream" id=6]
+[ext_resource path="res://throttle-stem.wav" type="AudioStream" id=6]
 [ext_resource path="res://237375__squareal__car-crash.wav" type="AudioStream" id=7]
 [ext_resource path="res://Camera.gd" type="Script" id=8]
+[ext_resource path="res://throttle-loop.wav" type="AudioStream" id=9]
 
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.1
@@ -93,8 +94,10 @@ use_as_steering = true
 [node name="EngineIdle" type="AudioStreamPlayer" parent="VehicleBody"]
 stream = ExtResource( 5 )
 
-[node name="EngineThrottle" type="AudioStreamPlayer" parent="VehicleBody"]
+[node name="EngineThrottleStart" type="AudioStreamPlayer" parent="VehicleBody"]
 stream = ExtResource( 6 )
+volume_db = -1.01
+pitch_scale = 0.7
 
 [node name="CrashSound" type="AudioStreamPlayer" parent="VehicleBody"]
 stream = ExtResource( 7 )
@@ -105,6 +108,10 @@ stream = ExtResource( 7 )
 transform = Transform( -1, 3.24022e-08, -8.11963e-08, 0, 0.928777, 0.370638, 8.74228e-08, 0.370638, -0.928777, 0, 16.099, -20.2923 )
 far = 1000.0
 script = ExtResource( 8 )
+
+[node name="EngineThrottleLoop" type="AudioStreamPlayer" parent="VehicleBody"]
+stream = ExtResource( 9 )
+pitch_scale = 0.7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 [connection signal="body_entered" from="VehicleBody" to="VehicleBody" method="_on_VehicleBody_body_entered"]
