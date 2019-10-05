@@ -22,6 +22,7 @@ onready var rspray = $BackVehicleWheelR/RSpray
 export var engine_force_value = 400
 
 var player
+var pjoy
 
 func set_body_color(body_color):
 	var mat = $hearse.get_surface_material(0).duplicate()
@@ -30,6 +31,10 @@ func set_body_color(body_color):
 	
 func set_player(p):
 	player = p
+	if p == "p1":
+		pjoy = 0
+	elif p == "p2":
+		pjoy = 1
 
 func update_spray():
 	lspray.emitting =  (engine_force > 0 and lbackwheel.is_in_contact()) \
@@ -56,7 +61,10 @@ func _physics_process(delta):
 	else:
 		steer_target = 0
 	
-	if Input.is_action_pressed(player+"_engine"):
+	# Nope
+	var updown = 0 #Input.get_joy_axis(pjoy,JOY_AXIS_1)
+	
+	if Input.is_action_pressed(player+"_engine") or updown > 0:
 		engine_force = engine_force_value
 		idle_sound.stop()
 		if not throttle_sound.playing && throttle_up:
@@ -72,7 +80,7 @@ func _physics_process(delta):
 		if not idle_sound.playing:
 			pass #idle_sound.play()
 			
-	if Input.is_action_pressed(player+"_brake"):
+	if Input.is_action_pressed(player+"_brake") or updown < 0:
 		if (fwd_mps >= -1):
 			engine_force = -engine_force_value
 		else:
