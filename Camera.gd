@@ -50,7 +50,7 @@ func _ready():
 			collision_exception.append(node.get_rid())
 			break
 		else:
-			node = node.get_parent()
+			node = node.get_parent().get_parent()
 	
 	# This detaches the camera transform from the parent spatial node
 	set_as_toplevel(true)
