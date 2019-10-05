@@ -40,3 +40,11 @@ func _process(delta):
 		self.set_steering(-.5)
 	else:
 		self.set_steering(0)
+
+
+
+func _on_VehicleBody_body_entered(body):
+	if body.get_collision_layer_bit(1):
+		print("Bang")
+		$CrashSound.play()
+
