@@ -97,8 +97,6 @@ use_as_steering = true
 
 [node name="EngineIdle" type="AudioStreamPlayer" parent="VehicleBody"]
 stream = ExtResource( 5 )
-volume_db = -1.0
-pitch_scale = 0.69
 
 [node name="EngineThrottleStart" type="AudioStreamPlayer" parent="VehicleBody"]
 stream = ExtResource( 6 )
@@ -121,13 +119,11 @@ render_target_clear_mode = 2
 shadow_atlas_size = 100
 
 [node name="Camera" type="Camera" parent="VehicleBody/cambase/Viewport"]
-transform = Transform( -0.908928, 0.319405, 0.268012, 0.416954, 0.696279, 0.584247, 8.74228e-08, 0.642787, -0.766045, -0.000795364, 21.4134, -57.7173 )
+transform = Transform( -1, 5.61943e-08, -6.69697e-08, 0, 0.766045, 0.642787, 8.74228e-08, 0.642787, -0.766045, -0.000795007, 9.99791, -10.0012 )
 current = true
 fov = 50.0
 far = 1000.0
 script = ExtResource( 9 )
-min_distance = 5
-max_distance = 40.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

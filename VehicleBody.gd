@@ -28,6 +28,7 @@ var pjoy
 var checkpoint
 var laps = null
 var active = false
+var initial_wheel_slip
 
 func _ready():
 	active = false
@@ -35,6 +36,7 @@ func _ready():
 	pickups = 0
 	checkpoint = null
 	laps = []
+	initial_wheel_slip = lbackwheel.wheel_friction_slip
 	get_parent().get_node("StartTimer").start()
 
 func set_body_color(body_color):
@@ -58,9 +60,8 @@ func update_spray():
 func reset_position():
 	active = false
 	get_parent().get_node("StartTimer").start()
-	var reset = Transform()
-	reset = reset.translated(global_transform.origin + Vector3(0,3,0) )
-	transform = reset
+	rotation = Vector3(0,0,0)
+	translate_object_local( Vector3(0, 3, 0) ) # lift up
 	linear_velocity = Vector3(0,0,0)
 	angular_velocity = Vector3(0,0,0)
 	
@@ -71,6 +72,14 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed(player+"_reset") or translation.y < -50:
 		reset_position()
+
+	if Input.is_action_pressed(player+"_ebrake"):
+		lbackwheel.wheel_friction_slip = 0.4 * initial_wheel_slip
+		rbackwheel.wheel_friction_slip = 0.4 * initial_wheel_slip
+	else:
+		lbackwheel.wheel_friction_slip = initial_wheel_slip
+		rbackwheel.wheel_friction_slip = initial_wheel_slip
+		
 
 	if Input.is_action_pressed(player+"_left"):
 		steer_target = STEER_LIMIT
