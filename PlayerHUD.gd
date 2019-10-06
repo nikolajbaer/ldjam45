@@ -17,6 +17,9 @@ onready var bingsound = $BingSound
 
 onready var music = $Music
 
+onready var countdownsprite = $CountdownSprite
+onready var countdowntimer = $UICountdownTimer
+
 var vehicle = null
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +27,11 @@ var vehicle = null
 func _countdown_sounds():
 	bongsound.play()
 	starttimer.start()
+
+func _countdown_graphics():
+	countdowntimer.start()
+	countdownsprite.visible = true
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -47,3 +55,7 @@ func _on_BingSound_finished():
 
 func _on_UIGapTimer_timeout():
 	bingsound.play()	
+
+
+func _on_UICountdownTimer_timeout():
+	countdownsprite.increment_index()

@@ -25,11 +25,14 @@ func _ready():
 
 	hud1.vehicle = vehicle1.get_node("VehicleBody") 
 	hud1.vehicle.connect("countdown_started", hud1, "_countdown_sounds")
+	hud1.vehicle.connect("countdown_started", hud1, "_countdown_graphics")
+	
 	hud2.vehicle = vehicle2.get_node("VehicleBody")
+	hud2.vehicle.connect("countdown_started", hud2, "_countdown_graphics")
 	
 	camera1 = vehicle1.get_camera()
 	camera2 = vehicle2.get_camera()
-
+	
 	camera1.set_transform(vehicle1.get_transform())
 	camera1.translate(Vector3(25.0, 90.0, 5.0))
 	camera2.set_transform(vehicle2.get_transform())
