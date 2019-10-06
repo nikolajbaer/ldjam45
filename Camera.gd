@@ -2,6 +2,7 @@ extends Camera
 
 # Member variables
 var collision_exception = []
+export var is_trash = false
 export var min_distance = 10
 export var max_distance = 20.0
 export var angle_v_adjust = 0.0
@@ -14,7 +15,8 @@ var flying_in = true
 signal flyin_complete
 
 func _physics_process(dt):
-	
+	if is_trash:
+		return
 	var vehicle_body = get_parent().get_parent().get_parent()
 	var target = vehicle_body.get_global_transform().origin
 	var pos = get_transform().origin
@@ -56,6 +58,8 @@ func _physics_process(dt):
 
 
 func _ready():
+	if is_trash:
+		return
 	# Find collision exceptions for ray
 	var node = self
 	while(node):
