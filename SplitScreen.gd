@@ -23,9 +23,13 @@ func _ready():
 	vehicle1 = worldSceneInstance.get_node("VehicleBody")
 	vehicle2 = worldSceneInstance.get_node("VehicleBody2")
 
+	worldSceneInstance.hud1 = hud1
 	hud1.vehicle = vehicle1.get_node("VehicleBody") 
-	hud1.vehicle.connect("countdown_started", hud1, "_countdown_sounds")
+	hud1.vehicle.connect("countdown_started", self, "_start_game")
+	
+	worldSceneInstance.hud1 = hud2
 	hud2.vehicle = vehicle2.get_node("VehicleBody")
+	hud2.vehicle.connect("countdown_started", self, "_start_game")
 	
 	camera1 = vehicle1.get_camera()
 	camera2 = vehicle2.get_camera()
@@ -46,3 +50,6 @@ func _ready():
 	# Assign the camera viewport textures to the sprites
 	viewport_sprite1.texture = camera1.get_viewport().get_texture()
 	viewport_sprite2.texture = camera2.get_viewport().get_texture()
+
+func _start_game():
+	worldSceneInstance.try_start()

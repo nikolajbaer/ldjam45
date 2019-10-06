@@ -12,6 +12,10 @@ var throttle_down = false
 
 var pickups = 0
 var start_mass
+var turbo_boost = 1 # Boost allowance per lap
+var boost_on = 0
+var BOOST = 5 # multiplier for boost
+var BOOST_TIME = 1 # seconds of boost
 
 signal countdown_started
 
@@ -63,8 +67,8 @@ func set_player(p):
 		pjoy = 1
 
 func update_spray():
-	lspray.emitting =  lbackwheel.get_skidinfo() < 0.8
-	rspray.emitting =  rbackwheel.get_skidinfo() < 0.8
+	lspray.emitting =  (lbackwheel.get_skidinfo() < 0.8 or boost_on > 0)
+	rspray.emitting =  (rbackwheel.get_skidinfo() < 0.8 or boost_on > 0)
 	
 func reset_position():
 	active = false
@@ -88,7 +92,15 @@ func _physics_process(delta):
 	else:
 		lbackwheel.wheel_friction_slip = initial_wheel_slip
 		rbackwheel.wheel_friction_slip = initial_wheel_slip
-		
+
+	if Input.is_action_pressed(player+"_boost"):
+		if boost_on > 0:
+			boost_on -= delta
+		elif turbo_boost > 0:
+			turbo_boost -= 1
+			boost_on = BOOST_TIME
+	else:
+		boost_on = 0
 
 	if Input.is_action_pressed(player+"_left"):
 		steer_target = STEER_LIMIT
@@ -98,7 +110,9 @@ func _physics_process(delta):
 		steer_target = 0
 	
 	if Input.is_action_pressed(player+"_engine") or Input.is_joy_button_pressed(pjoy, JOY_BUTTON_0):
-		engine_force = engine_force_value
+		var b = 1
+		if boost_on > 0: b = BOOST
+		engine_force = engine_force_value * b
 		idle_sound.stop()
 		if not throttle_sound.playing && throttle_up:
 			throttle_up = false
@@ -171,7 +185,10 @@ func lap_complete(lap_num,lap_time):
 	print(player,"Lap Time %s seconds " % lap_time )
 	emit_signal("lap_completed",lap_num,lap_time)
 	process_pickups()
-
+		
+	# Restore Turbo Boost
+	turbo_boost = 1
+	
 	if len(laps) > 1 and ( best_lap == null or best_lap > lap_time ):
 		print(player,"Setting best lap from ",best_lap,lap_time)
 		best_lap = lap_time

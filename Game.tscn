@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://GroundMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://VehicleBody.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Cone.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Junk.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Blob.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Blob.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=6]
 
 [node name="GameRoot" type="Spatial"]
 script = ExtResource( 1 )
@@ -49,273 +48,243 @@ transform = Transform( 0.908283, -0.192642, 0.371362, -0.418355, -0.418242, 0.80
 light_energy = 0.8
 shadow_enabled = true
 
-[node name="JunkField" type="Spatial" parent="."]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 72.698, 1.25903, -210.124 )
-
-[node name="Junk" parent="JunkField" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42678, 0 )
-
-[node name="Junk5" parent="JunkField" instance=ExtResource( 5 )]
-transform = Transform( -0.194229, 0, 0.980956, 0, 1, 0, -0.980956, 0, -0.194229, -30.7079, 1.42678, 23.3299 )
-
-[node name="Junk8" parent="JunkField" instance=ExtResource( 5 )]
-transform = Transform( 0.805191, 0, 0.593016, 0, 1, 0, -0.593016, 0, 0.805191, -9.85596, 1.42678, -10.8858 )
-
-[node name="Junk2" parent="JunkField" instance=ExtResource( 5 )]
-transform = Transform( 0.70115, 0, 0.713014, 0, 1, 0, -0.713014, 0, 0.70115, 17.1757, 1.42678, 0 )
-
-[node name="Junk4" parent="JunkField" instance=ExtResource( 5 )]
-transform = Transform( -0.835619, 0, 0.549309, 0, 1, 0, -0.549309, 0, -0.835619, -34.0439, 1.42678, 6.48131 )
-
-[node name="Junk7" parent="JunkField" instance=ExtResource( 5 )]
-transform = Transform( 0.141731, 0, 0.989905, 0, 1, 0, -0.989905, 0, 0.141731, 3.97374, 1.42678, -21.0713 )
-
-[node name="Junk3" parent="JunkField" instance=ExtResource( 5 )]
-transform = Transform( 0.70115, 0, 0.713014, 0, 1, 0, -0.713014, 0, 0.70115, 3.17419, 1.42678, 24.9627 )
-
-[node name="Junk6" parent="JunkField" instance=ExtResource( 5 )]
-transform = Transform( -0.835619, 0, 0.549309, 0, 1, 0, -0.549309, 0, -0.835619, -6.83711, 1.42678, 15.3677 )
-
-[node name="Junk9" parent="JunkField" instance=ExtResource( 5 )]
-transform = Transform( 0.141731, 0, 0.989905, 0, 1, 0, -0.989905, 0, 0.141731, 7.50317, 1.42678, 7.33157 )
-
 [node name="Blobs" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
-[node name="Blob" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.4928, 0, -36.3394 )
 
-[node name="Blob2" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob2" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 73.6922, 0, -53.7101 )
 
-[node name="Blob3" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob3" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 110.242, 0, -76.4631 )
 
-[node name="Blob4" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob4" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 156.175, 0, -74.431 )
 
-[node name="Blob5" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob5" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 205.357, 0, -76.6781 )
 
-[node name="Blob6" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob6" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 205.357, 0, -76.6781 )
 
-[node name="Blob7" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob7" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 247.1, 0, -41.1998 )
 
-[node name="Blob8" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob8" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 285.17, 0, -29.7283 )
 
-[node name="Blob9" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob9" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 321.134, 0, -3.56206 )
 
-[node name="Blob10" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob10" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 329.732, 0, 38.5496 )
 
-[node name="Blob11" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob11" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 323.084, 0, 74.1749 )
 
-[node name="Blob12" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob12" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 345.681, 0, 214.808 )
 
-[node name="Blob13" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob13" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 349.764, 0, 259.88 )
 
-[node name="Blob14" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob14" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 346.586, 0, 316.625 )
 
-[node name="Blob15" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob15" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 312.558, 0, 351.481 )
 
-[node name="Blob16" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob16" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 268.935, 0, 354.518 )
 
-[node name="Blob17" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob17" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 236.712, 0, 321.397 )
 
-[node name="Blob18" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob18" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 209.801, 0, 279.877 )
 
-[node name="Blob19" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob19" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 167.56, 0, 244.875 )
 
-[node name="Blob20" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob20" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 116.529, 0, 254.346 )
 
-[node name="Blob21" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob21" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 67.6509, 0, 282.625 )
 
-[node name="Blob22" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob22" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.0696, 0, 335.543 )
 
-[node name="Blob23" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob23" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2173, 0, 372.661 )
 
-[node name="Blob24" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob24" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60.0708, 0, 361.204 )
 
-[node name="Blob25" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob25" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -112.3, 0, 357.448 )
 
-[node name="Blob26" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob26" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -177.776, 0, 358.599 )
 
-[node name="Blob27" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob27" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -233.97, 0, 345.278 )
 
-[node name="Blob28" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob28" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -283.754, 0, 303.527 )
 
-[node name="Blob29" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob29" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -302.257, 0, 260.411 )
 
-[node name="Blob30" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob30" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -320.392, 0, 194.743 )
 
-[node name="Blob31" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob31" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -329.077, 0, 144.071 )
 
-[node name="Blob32" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob32" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -335.269, 0, 69.2987 )
 
-[node name="Blob33" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob33" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -341.405, 0, -14.6019 )
 
-[node name="Blob34" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob34" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -336.046, 0, -118.396 )
 
-[node name="Blob35" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob35" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -333.429, 0, -205.323 )
 
-[node name="Blob36" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob36" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -327.516, 0, -309.526 )
 
-[node name="Blob37" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob37" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -289.457, 0, -369.017 )
 
-[node name="Blob38" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob38" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -213.673, 0, -397.725 )
 
-[node name="Blob39" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob39" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -132.817, 0, -403.98 )
 
-[node name="Blob40" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob40" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.1893, 0, -410.872 )
 
-[node name="Blob41" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob41" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4451, 0, -409.498 )
 
-[node name="Blob42" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob42" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90.682, 0, -412.019 )
 
-[node name="Blob43" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob43" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 157.727, 0, -406.781 )
 
-[node name="Blob44" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob44" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 237.018, 0, -391.601 )
 
-[node name="Blob45" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob45" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 293.094, 0, -357.662 )
 
-[node name="Blob46" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob46" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 293.094, 0, -309.978 )
 
-[node name="Blob47" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob47" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 306.706, 0, -251.478 )
 
-[node name="Blob48" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob48" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 280.803, 0, -210.751 )
 
-[node name="Blob49" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob49" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 230.461, 0, -198.584 )
 
-[node name="Blob50" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob50" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 174.015, 0, -197.803 )
 
-[node name="Blob51" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob51" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 123.536, 0, -197.764 )
 
-[node name="Blob52" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob52" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6122, 0, -196.854 )
 
-[node name="Blob53" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob53" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.7887, 0, -186.55 )
 
-[node name="Blob54" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob54" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -78.9733, 0, -165.052 )
 
-[node name="Blob55" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob55" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -133.429, 0, -127.019 )
 
-[node name="Blob56" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob56" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -166.074, 0, -85.6496 )
 
-[node name="Blob57" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob57" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -183.265, 0, -23.1219 )
 
-[node name="Blob58" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob58" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -177.078, 0, 21.3535 )
 
-[node name="Blob59" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob59" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -177.078, 0, 21.3535 )
 
-[node name="Blob60" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob60" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -180.112, 0, 64.6059 )
 
-[node name="Blob61" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob61" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -172.396, 0, 109.33 )
 
-[node name="Blob62" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob62" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -142.962, 0, 126.485 )
 
-[node name="Blob63" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob63" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -104.182, 0, 136.281 )
 
-[node name="Blob64" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob64" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -73.0157, 0, 136.007 )
 
-[node name="Blob65" parent="Blobs" instance=ExtResource( 6 )]
+[node name="Blob65" parent="Blobs" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.4171, 0, 120.564 )
 
 [node name="Checkpoints" type="Spatial" parent="."]
 editor/display_folded = true
 
-[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 7 )]
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( 2.72349, 0, -2.92961, 0, 4, 0, 2.92961, 0, 2.72349, 76.7819, 0, -59.3683 )
 
-[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 7 )]
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( -3.94658, 0, -0.65155, 0, 4, 0, 0.65155, 0, -3.94658, 348.314, 0, 120.314 )
 sequence = 1
 
-[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 7 )]
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( 0.0501711, 0, 3.99969, 0, 4, 0, -3.99969, 0, 0.0501711, 296.209, 0, 368.028 )
 sequence = 2
 
-[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource( 7 )]
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( 0.0501711, 0, 3.99969, 0, 4, 0, -3.99969, 0, 0.0501711, -65.9655, 0, 361.194 )
 sequence = 3
 
-[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource( 7 )]
+[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( 3.99273, 0, 0.240978, 0, 4, 0, -0.240978, 0, 3.99273, -337.596, 0, 122.877 )
 sequence = 4
 
-[node name="Checkpoint6" parent="Checkpoints" instance=ExtResource( 7 )]
+[node name="Checkpoint6" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( 3.99273, 0, 0.240978, 0, 4, 0, -0.240978, 0, 3.99273, -329.054, 0, -230.756 )
 sequence = 5
 
-[node name="Checkpoint7" parent="Checkpoints" instance=ExtResource( 7 )]
+[node name="Checkpoint7" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( 0.168859, 0, -3.99643, 0, 4, 0, 3.99643, 0, 0.168859, -101.841, 0, -416.968 )
 sequence = 6
 
-[node name="Checkpoint8" parent="Checkpoints" instance=ExtResource( 7 )]
+[node name="Checkpoint8" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( -2.66733, 0, -2.98083, 0, 4, 0, 2.98083, 0, -2.66733, 250.083, 0, -391.342 )
 sequence = 7
 
-[node name="Checkpoint9" parent="Checkpoints" instance=ExtResource( 7 )]
+[node name="Checkpoint9" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( -0.0641655, 0, 3.99949, 0, 4, 0, -3.99949, 0, -0.0641655, 47.7779, 0, -203.543 )
 sequence = 8
 
-[node name="Checkpoint10" parent="Checkpoints" instance=ExtResource( 7 )]
+[node name="Checkpoint10" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( -3.93484, 0, -0.719063, 0, 4, 0, 0.719063, 0, -3.93484, -185.551, 0, 92.9803 )
 sequence = 9

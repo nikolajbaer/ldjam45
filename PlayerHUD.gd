@@ -3,11 +3,12 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-onready var pickups = $HBoxContainer/VBoxContainer/Pickups
-onready var lap = $HBoxContainer/VBoxContainer/Lap
-onready var bestlap = $HBoxContainer/VBoxContainer/Bestlap
-onready var elapsed = $HBoxContainer/VBoxContainer/Elapsed
-onready var score = $HBoxContainer/VBoxContainer/Score
+onready var pickups = $Pickups
+onready var lap = $Lap
+onready var bestlap = $Bestlap
+onready var elapsed = $Elapsed
+onready var score = $Score
+onready var turbo_available = $fastForward
 
 onready var starttimer = $UIStartTimer
 onready var gaptimer   = $UIGapTimer
@@ -37,6 +38,8 @@ func _process(delta):
 		if len(vehicle.laps) > 0:
 			elapsed.text = "Elapsed: %s" % vehicle.get_elapsed()
 			score.text = "Score: %s" % vehicle.get_score()
+		turbo_available.visible = vehicle.turbo_boost > 0
+			
 
 func _on_UIStartTimer_timeout():
 	bongsound.stop()
