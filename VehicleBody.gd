@@ -113,9 +113,9 @@ func _physics_process(delta):
 		boost_on -= delta
 
 	if Input.is_action_pressed(player+"_left"):
-		steer_target = STEER_LIMIT
+		steer_target = STEER_LIMIT * Input.get_action_strength(player+"_left")
 	elif Input.is_action_pressed(player+"_right"):
-		steer_target = -STEER_LIMIT
+		steer_target = -STEER_LIMIT * Input.get_action_strength(player+"_right")
 	else:
 		steer_target = 0
 	
