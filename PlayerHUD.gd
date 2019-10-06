@@ -62,3 +62,11 @@ func _on_UIGapTimer_timeout():
 
 func _on_UICountdownTimer_timeout():
 	countdownsprite.increment_index()
+
+func set_finished(score):
+	$FinishedControl.visible = true
+	$FinishedControl/score.text = "Score: %s" % score
+
+func set_winner():
+	$FinishedControl/finished.visible = false
+	$FinishedControl/winner.visible = true

@@ -1,9 +1,12 @@
 extends Spatial
 
 
-export var lap_count = 3
+export var lap_count = 1
 var hud1
 var hud2
+
+onready var player1 = $VehicleBody/VehicleBody
+onready var player2 = $VehicleBody2/VehicleBody
 
 func _ready():
 	pass
@@ -18,3 +21,18 @@ func start_game():
 	hud2._countdown_graphics()
 	$VehicleBody/VehicleBody.timer.start()
 	$VehicleBody2/VehicleBody.timer.start()
+
+func _on_VehicleBody_lap_completed(lap_num,lap_time):
+	if player1.laps_completed() == lap_count and not player1.finished:
+		player1.set_finished()
+		hud1.set_finished(player1.get_score())
+	if player2.laps_completed() == lap_count and not player2.finished:
+		player2.set_finished()
+		hud2.set_finished(player2.get_score())
+		
+	if player1.finished and player2.finished:
+		var winner = hud1
+		if player2.get_score() < player1.get_score():
+			winner = hud2
+		winner.set_winner()
+
