@@ -37,7 +37,8 @@ func _ready():
 	checkpoint = null
 	laps = []
 	initial_wheel_slip = lbackwheel.wheel_friction_slip
-	get_parent().get_node("StartTimer").start()
+	# Now goes from Camera Fly-In
+	#get_parent().get_node("StartTimer").start()
 
 func set_body_color(body_color):
 	var mat = $hearse.get_surface_material(0).duplicate()
