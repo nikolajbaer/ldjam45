@@ -11,10 +11,10 @@
 [ext_resource path="res://Camera.gd" type="Script" id=9]
 
 [sub_resource type="PhysicsMaterial" id=1]
-bounce = 0.1
+friction = 0.5
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 1.32315, 1.10619, 3.54888 )
+extents = Vector3( 2.61824, 1.10619, 3.54888 )
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.819608, 0.341176, 0.847059, 1 )
@@ -50,11 +50,11 @@ script = ExtResource( 2 )
 engine_force_value = 100
 
 [node name="CollisionShape" type="CollisionShape" parent="VehicleBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.864668, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.448746, 0 )
 shape = SubResource( 2 )
 
 [node name="hearse" type="MeshInstance" parent="VehicleBody"]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.644444, 0.452353 )
+transform = Transform( 6.04927, 0, 0, 0, 3, 0, 0, 0, 3, 0, -1.06037, 0.452353 )
 mesh = ExtResource( 3 )
 material/0 = SubResource( 3 )
 material/1 = SubResource( 4 )
@@ -64,6 +64,7 @@ material/4 = null
 material/5 = null
 
 [node name="BackVehicleWheelL" parent="VehicleBody" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77933, -0.369889, -1.65871 )
 
 [node name="LSpray" type="Particles" parent="VehicleBody/BackVehicleWheelL"]
 transform = Transform( 1, 0, 0, 0, -0.953508, 0.301368, 0, -0.301368, -0.953508, -0.00382018, -0.696151, -0.93293 )
@@ -74,7 +75,7 @@ process_material = SubResource( 6 )
 draw_pass_1 = SubResource( 8 )
 
 [node name="BackVehicleWheelR" parent="VehicleBody" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03645, -0.369889, -1.65871 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.15795, -0.384824, -1.65738 )
 
 [node name="RSpray" type="Particles" parent="VehicleBody/BackVehicleWheelR"]
 transform = Transform( 1, 0, 0, 0, -0.953508, 0.301368, 0, -0.301368, -0.953508, -0.1096, -0.696151, -0.93293 )
@@ -85,11 +86,13 @@ process_material = SubResource( 6 )
 draw_pass_1 = SubResource( 8 )
 
 [node name="FrontVehicleWheelL" parent="VehicleBody" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10067, -0.369889, 2.71442 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82842, -0.369889, 2.71442 )
+use_as_traction = false
 use_as_steering = true
 
 [node name="FrontVehicleWheelR" parent="VehicleBody" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03645, -0.369889, 2.71442 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.18241, -0.369889, 2.71442 )
+use_as_traction = false
 use_as_steering = true
 
 [node name="EngineIdle" type="AudioStreamPlayer" parent="VehicleBody"]
