@@ -31,9 +31,9 @@ func _ready():
 	camera2 = vehicle2.get_camera()
 
 	camera1.set_transform(vehicle1.get_transform())
-	camera1.translate(Vector3(5.0, 130.0, 5.0))
+	camera1.translate(Vector3(25.0, 90.0, 5.0))
 	camera2.set_transform(vehicle2.get_transform())
-	camera2.translate(Vector3(-5.0, 130.0, 5.0))
+	camera2.translate(Vector3(25.0, 90.0, 5.0))
 	# Get the sprites
 	viewport_sprite1 = get_node("Player1_container/Player1")
 	viewport_sprite2 = get_node("Player2_container/Player2")
