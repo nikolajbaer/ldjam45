@@ -42,17 +42,19 @@ func update_spray():
 	rspray.emitting =  (engine_force > 0 and rbackwheel.is_in_contact()) \
 						or rbackwheel.get_skidinfo() < 0.5
 	
+func reset_position():
+	var reset = Transform()
+	reset.translated( translation - get_parent().translation )
+	reset.translated(Vector3(0,0,3))
+	transform = reset
+	linear_velocity = Vector3(0,0,0)
+	angular_velocity = Vector3(0,0,0)
+	
 func _physics_process(delta):
 	var fwd_mps = transform.basis.xform_inv(linear_velocity).x
 
-	if Input.is_action_pressed(player+"_reset"):
-		var reset = Transform()
-		reset.translated( translation - get_parent().translation )
-		reset.translated(Vector3(0,0,3))
-		transform = reset
-		linear_velocity = Vector3(0,0,0)
-		angular_velocity = Vector3(0,0,0)
-		
+	if Input.is_action_pressed(player+"_reset") or translation.y < -50:
+		reset_position()
 
 	if Input.is_action_pressed(player+"_left"):
 		steer_target = STEER_LIMIT
