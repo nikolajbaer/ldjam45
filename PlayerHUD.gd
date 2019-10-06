@@ -73,7 +73,7 @@ func _on_UICountdownTimer_timeout():
 
 func set_finished(score):
 	$FinishedControl.visible = true
-	$FinishedControl/score.text = "Score: %s" % score
+	$FinishedControl/score.text = "Score: %s" % vehicle.get_score()
 
 func set_winner():
 	$FinishedControl/finished.visible = false
