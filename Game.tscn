@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://GroundMap.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Cone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Junk.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Blob.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=7]
 
 [node name="GameRoot" type="Spatial"]
 script = ExtResource( 1 )
@@ -276,3 +277,44 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -73.0157, 0, 136.007 )
 
 [node name="Blob65" parent="Blobs" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.4171, 0, 120.564 )
+
+[node name="Checkpoints" type="Spatial" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 7 )]
+transform = Transform( 2.72349, 0, -2.92961, 0, 4, 0, 2.92961, 0, 2.72349, 76.7819, 0, -59.3683 )
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 7 )]
+transform = Transform( -3.94658, 0, -0.65155, 0, 4, 0, 0.65155, 0, -3.94658, 348.314, 0, 120.314 )
+sequence = 1
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 7 )]
+transform = Transform( 0.0501711, 0, 3.99969, 0, 4, 0, -3.99969, 0, 0.0501711, 296.209, 0, 368.028 )
+sequence = 2
+
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource( 7 )]
+transform = Transform( 0.0501711, 0, 3.99969, 0, 4, 0, -3.99969, 0, 0.0501711, -65.9655, 0, 361.194 )
+sequence = 3
+
+[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource( 7 )]
+transform = Transform( 3.99273, 0, 0.240978, 0, 4, 0, -0.240978, 0, 3.99273, -337.596, 0, 122.877 )
+sequence = 4
+
+[node name="Checkpoint6" parent="Checkpoints" instance=ExtResource( 7 )]
+transform = Transform( 3.99273, 0, 0.240978, 0, 4, 0, -0.240978, 0, 3.99273, -329.054, 0, -230.756 )
+sequence = 5
+
+[node name="Checkpoint7" parent="Checkpoints" instance=ExtResource( 7 )]
+transform = Transform( 0.168859, 0, -3.99643, 0, 4, 0, 3.99643, 0, 0.168859, -101.841, 0, -416.968 )
+sequence = 6
+
+[node name="Checkpoint8" parent="Checkpoints" instance=ExtResource( 7 )]
+transform = Transform( -2.66733, 0, -2.98083, 0, 4, 0, 2.98083, 0, -2.66733, 250.083, 0, -391.342 )
+sequence = 7
+
+[node name="Checkpoint9" parent="Checkpoints" instance=ExtResource( 7 )]
+transform = Transform( -0.0641655, 0, 3.99949, 0, 4, 0, -3.99949, 0, -0.0641655, 37.3907, 0, -209.401 )
+sequence = 8
+
+[node name="Checkpoint10" parent="Checkpoints" instance=ExtResource( 7 )]
+transform = Transform( -3.93484, 0, -0.719063, 0, 4, 0, 0.719063, 0, -3.93484, -185.551, 0, 92.9803 )
+sequence = 9

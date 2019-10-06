@@ -25,10 +25,20 @@ export var engine_force_value = 400
 
 var player
 var pjoy
+var checkpoint
+var laps = null
+var active = false
+var initial_wheel_slip
 
 func _ready():
+	active = false
 	start_mass = mass
 	pickups = 0
+	checkpoint = null
+	laps = []
+	initial_wheel_slip = lbackwheel.wheel_friction_slip
+	# Now goes from Camera Fly-In
+	#get_parent().get_node("StartTimer").start()
 
 func set_body_color(body_color):
 	var mat = $hearse.get_surface_material(0).duplicate()
@@ -49,18 +59,28 @@ func update_spray():
 						or rbackwheel.get_skidinfo() < 0.5
 	
 func reset_position():
-	var reset = Transform()
-	reset.translated( translation - get_parent().translation )
-	reset.translated(Vector3(0,0,3))
-	transform = reset
+	active = false
+	get_parent().get_node("StartTimer").start()
+	rotation = Vector3(0,0,0)
+	translate_object_local( Vector3(0, 3, 0) ) # lift up
 	linear_velocity = Vector3(0,0,0)
 	angular_velocity = Vector3(0,0,0)
 	
 func _physics_process(delta):
+	if not active: return
+	
 	var fwd_mps = transform.basis.xform_inv(linear_velocity).x
 
 	if Input.is_action_pressed(player+"_reset") or translation.y < -50:
 		reset_position()
+
+	if Input.is_action_pressed(player+"_ebrake"):
+		lbackwheel.wheel_friction_slip = 0.4 * initial_wheel_slip
+		rbackwheel.wheel_friction_slip = 0.4 * initial_wheel_slip
+	else:
+		lbackwheel.wheel_friction_slip = initial_wheel_slip
+		rbackwheel.wheel_friction_slip = initial_wheel_slip
+		
 
 	if Input.is_action_pressed(player+"_left"):
 		steer_target = STEER_LIMIT
@@ -117,3 +137,22 @@ func _on_VehicleBody_body_entered(body):
 func add_pickup(area):
 	pickups += 1
 	mass = start_mass + pickups
+
+func set_checkpoint(c):
+	if checkpoint != null and \
+		( not ( c.sequence == 0 and checkpoint.sequence == 9 ) ) and \
+		( checkpoint.sequence + 1 != c.sequence):
+		return
+	print("Set Checkpoint %s " % c.sequence)
+	checkpoint = c
+	if checkpoint.sequence == 0:
+		laps.append( OS.get_ticks_msec() ) # Todo save global time in seconds
+		var lap_time = (laps[len(laps) - 1] - laps[len(laps) - 2]) / 1000
+		if len(laps) > 1:
+			print( "Lap %s Complete" % len(laps) )
+			print("Lap Time %s seconds " % lap_time )
+		print("Lap %s Started" % len(laps) )
+
+func _on_StartTimer_timeout():
+	print("Activating Player "+player)
+	active = true

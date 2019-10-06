@@ -43,11 +43,11 @@ func _physics_process(dt):
 	if flying_in:
 		#translate(Vector3(1.0,0,0))
 		var d = target - get_transform().origin
-		print(d.length(), d/100.0)
+		#print(d.length(), d/100.0)
 		translate(d/100.0)
 		if d.length() < max_distance:
 			flying_in = false
-			
+			get_parent().get_parent().get_parent().get_parent().get_node("StartTimer").start()
 			
 		
 		
