@@ -11,6 +11,8 @@ var max_height = 1.0
 var min_height = 0.5
 var flying_in = true
 
+signal flyin_complete
+
 func _physics_process(dt):
 	
 	var vehicle_body = get_parent().get_parent().get_parent()
@@ -19,11 +21,9 @@ func _physics_process(dt):
 	var up = Vector3(0, 1, 0)
 	target.y += 5
 	
-	
 	var delta = pos - target
 	
 	# Regular delta follow
-	
 	# Check ranges
 	if !flying_in:
 		if (delta.length() < min_distance):
@@ -47,14 +47,8 @@ func _physics_process(dt):
 		translate(d/100.0)
 		if d.length() < max_distance:
 			flying_in = false
-			get_parent().get_parent().get_parent().get_parent().get_node("StartTimer").start()
+			emit_signal("flyin_complete")
 			
-		
-		
-		
-		
-	
-	
 	# Turn a little up or down
 	var t = get_transform()
 	t.basis = Basis(t.basis[0], deg2rad(angle_v_adjust))*t.basis

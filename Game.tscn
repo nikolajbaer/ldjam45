@@ -23,6 +23,7 @@ body_color = Color( 0.172549, 1, 0, 1 )
 player = "p2"
 
 [node name="Cones" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 0.995738, 0, 0.0922321, 0, 1, 0, -0.0922321, 0, 0.995738, 331.427, 0, 202.845 )
 
 [node name="Spatial" parent="Cones" instance=ExtResource( 4 )]
@@ -279,6 +280,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -73.0157, 0, 136.007 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.4171, 0, 120.564 )
 
 [node name="Checkpoints" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 7 )]
 transform = Transform( 2.72349, 0, -2.92961, 0, 4, 0, 2.92961, 0, 2.72349, 76.7819, 0, -59.3683 )

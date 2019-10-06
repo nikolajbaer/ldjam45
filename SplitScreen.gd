@@ -12,7 +12,7 @@ var viewport_sprite1
 var viewport_sprite2
 
 
-
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(Input.get_connected_joypads())
@@ -24,7 +24,8 @@ func _ready():
 	vehicle1 = worldSceneInstance.get_node("VehicleBody")
 	vehicle2 = worldSceneInstance.get_node("VehicleBody2")
 
-	hud1.vehicle = vehicle1.get_node("VehicleBody")
+	hud1.vehicle = vehicle1.get_node("VehicleBody") 
+	hud1.vehicle.connect("countdown_started", hud1, "_countdown_sounds")
 	hud2.vehicle = vehicle2.get_node("VehicleBody")
 	
 	camera1 = vehicle1.get_camera()

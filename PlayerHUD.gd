@@ -6,11 +6,22 @@ extends Control
 onready var pickups = $HBoxContainer/VBoxContainer/Pickups
 onready var lap = $HBoxContainer/VBoxContainer/Lap
 onready var bestlap = $HBoxContainer/VBoxContainer/Bestlap
+
+onready var starttimer = $UIStartTimer
+onready var gaptimer   = $UIGapTimer
+
+onready var bongsound = $BongSound
+onready var bingsound = $BingSound
+
+onready var music = $Music
+
 var vehicle = null
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+
+func _countdown_sounds():
+	bongsound.play()
+	starttimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -21,3 +32,13 @@ func _process(delta):
 			bestlap.text = "Best Lap: %s s" % vehicle.best_lap
 		else:
 			bestlap.text = " - "
+
+func _on_UIStartTimer_timeout():
+	bongsound.stop()
+	gaptimer.start(0.125)
+
+func _on_BingSound_finished():
+	music.play()
+
+func _on_UIGapTimer_timeout():
+	bingsound.play()	

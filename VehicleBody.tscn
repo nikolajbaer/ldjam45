@@ -131,4 +131,5 @@ script = ExtResource( 9 )
 wait_time = 3.0
 one_shot = true
 [connection signal="body_entered" from="VehicleBody" to="VehicleBody" method="_on_VehicleBody_body_entered"]
+[connection signal="flyin_complete" from="VehicleBody/cambase/Viewport/Camera" to="VehicleBody" method="_on_Camera_flyin_complete"]
 [connection signal="timeout" from="StartTimer" to="VehicleBody" method="_on_StartTimer_timeout"]

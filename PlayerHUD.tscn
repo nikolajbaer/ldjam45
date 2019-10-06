@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://PlayerHUD.gd" type="Script" id=1]
+[ext_resource path="res://bong.ogg" type="AudioStream" id=2]
+[ext_resource path="res://bing.ogg" type="AudioStream" id=3]
+[ext_resource path="res://music.ogg" type="AudioStream" id=4]
 
 [node name="PlayerHUD" type="Control"]
 anchor_right = 1.0
@@ -36,3 +39,22 @@ margin_right = 84.0
 margin_bottom = 67.0
 text = "Best Lap
 "
+
+[node name="BongSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="BingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="UIStartTimer" type="Timer" parent="."]
+wait_time = 2.9
+one_shot = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Music"
+
+[node name="UIGapTimer" type="Timer" parent="."]
+[connection signal="finished" from="BingSound" to="." method="_on_BingSound_finished"]
+[connection signal="timeout" from="UIStartTimer" to="." method="_on_UIStartTimer_timeout"]
+[connection signal="timeout" from="UIGapTimer" to="." method="_on_UIGapTimer_timeout" flags=6]
