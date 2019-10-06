@@ -17,6 +17,7 @@ var boost_on = 0
 var BOOST = 5 # multiplier for boost
 var BOOST_TIME = 1 # seconds of boost
 var finished
+var start_time = null
 
 signal countdown_started
 
@@ -81,7 +82,10 @@ func reset_position():
 	angular_velocity = Vector3(0,0,0)
 	
 func _physics_process(delta):
-	if not active: return
+	if not active: 
+		engine_force = 0
+		brake = 2
+		return
 	
 	var fwd_mps = transform.basis.xform_inv(linear_velocity).x
 
@@ -101,6 +105,7 @@ func _physics_process(delta):
 		elif turbo_boost > 0:
 			turbo_boost -= 1
 			boost_on = BOOST_TIME
+			boost_activated()
 	else:
 		boost_on = 0
 
@@ -134,7 +139,7 @@ func _physics_process(delta):
 		if (fwd_mps >= -1):
 			engine_force = -engine_force_value
 		else:
-			brake = 1
+			brake = 5
 	else:
 		brake = 0.0
 	
@@ -188,8 +193,6 @@ func lap_complete(lap_num,lap_time):
 	emit_signal("lap_completed",lap_num,lap_time)
 	process_pickups()
 		
-	# Restore Turbo Boost
-	turbo_boost = 1
 	
 	if len(laps) > 1 and ( best_lap == null or best_lap > lap_time ):
 		print(player,"Setting best lap from ",best_lap,lap_time)
@@ -198,6 +201,7 @@ func lap_complete(lap_num,lap_time):
 func _on_StartTimer_timeout():
 	print("Activating Player "+player)
 	active = true
+	start_time = OS.get_ticks_msec()
 
 func current_lap():
 	return len(laps)
@@ -208,13 +212,14 @@ func laps_completed():
 	return 0
 
 func get_elapsed():
-	return ((OS.get_ticks_msec() - laps[0]) / 1000.0)
+	if finished:
+		return (laps[len(laps)-1] - start_time)/1000.0
+	return ((OS.get_ticks_msec() - start_time) / 1000.0)
 
 func get_score():
 	return get_elapsed() - time_bonus
 
 func _on_Camera_flyin_complete():
-	#timer.start()
 	emit_signal("countdown_started")
 
 func set_finished():
@@ -222,3 +227,13 @@ func set_finished():
 	finished = true
 	active = false
 
+func current_speed():
+	return transform.basis.xform_inv(linear_velocity).x
+
+func reset_turbo_boost():
+	turbo_boost = 1
+
+func boost_activated():
+	get_parent().get_node("BoostRechargeTimer").start()
+	if not $BoostSound.playing:
+		$BoostSound.play()

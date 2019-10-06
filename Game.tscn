@@ -8,6 +8,7 @@
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://VehicleCamera.tscn" type="PackedScene" id=7]
 [ext_resource path="res://FancyEnvironment.tres" type="Environment" id=8]
+[ext_resource path="res://FinishLine.tscn" type="PackedScene" id=9]
 
 [node name="GameRoot" type="Spatial"]
 script = ExtResource( 1 )
@@ -296,5 +297,7 @@ transform = Transform( -0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, -
 environment = ExtResource( 8 )
 fov = 69.9
 is_trash = true
+[node name="FinishLine" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.716291, 0, 0.697802, 0, 1, 0, -0.697802, 0, 0.716291, 71.9423, -0.000244141, -53.9963 )
 [connection signal="lap_completed" from="VehicleBody" to="." method="_on_VehicleBody_lap_completed"]
 [connection signal="lap_completed" from="VehicleBody2" to="." method="_on_VehicleBody_lap_completed"]
