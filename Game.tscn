@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://GroundMap.tscn" type="PackedScene" id=2]
@@ -297,6 +297,7 @@ transform = Transform( -0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, -
 environment = ExtResource( 8 )
 fov = 69.9
 is_trash = true
+
 [node name="FinishLine" parent="." instance=ExtResource( 9 )]
 transform = Transform( 0.716291, 0, 0.697802, 0, 1, 0, -0.697802, 0, 0.716291, 71.9423, -0.000244141, -53.9963 )
 [connection signal="lap_completed" from="VehicleBody" to="." method="_on_VehicleBody_lap_completed"]

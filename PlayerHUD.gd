@@ -22,6 +22,8 @@ onready var music = $Music
 onready var countdownsprite = $CountdownSprite
 onready var countdowntimer = $UICountdownTimer
 
+onready var boosttimer = $BoostTimer
+
 var vehicle = null
 
 # Called when the node enters the scene tree for the first time.
@@ -48,7 +50,11 @@ func _process(delta):
 			elapsed.text = "Elapsed: %s" % vehicle.get_elapsed()
 			score.text = "Score: %s" % vehicle.get_score()
 		turbo_available.visible = vehicle.turbo_boost > 0
-		boost.visible = vehicle.boost_on > 0
+		if !boost.visible && vehicle.boost_on > 0:		
+			boost.visible = true
+			boosttimer.start()
+			
+		
 		speedometer.text = "%03d kmph" % int(vehicle.current_speed())
 
 func _on_UIStartTimer_timeout():
@@ -72,3 +78,7 @@ func set_finished(score):
 func set_winner():
 	$FinishedControl/finished.visible = false
 	$FinishedControl/winner.visible = true
+
+
+func _on_BoostTimer_timeout():
+	boost.visible = false

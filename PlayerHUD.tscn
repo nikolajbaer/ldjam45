@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://PlayerHUD.gd" type="Script" id=1]
 [ext_resource path="res://bong.ogg" type="AudioStream" id=2]
@@ -10,6 +10,14 @@
 [ext_resource path="res://finished.png" type="Texture" id=8]
 [ext_resource path="res://winner.png" type="Texture" id=9]
 [ext_resource path="res://boost.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), null, ExtResource( 10 ), null ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="PlayerHUD" type="Control"]
 anchor_right = 1.0
@@ -111,11 +119,22 @@ margin_bottom = 45.6008
 text = "000 kmph"
 align = 1
 
-[node name="boost" type="Sprite" parent="."]
+[node name="boost3" type="Sprite" parent="."]
 visible = false
 position = Vector2( 517.885, 79.3304 )
 texture = ExtResource( 10 )
+
+[node name="boost" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 517.885, 79.3304 )
+frames = SubResource( 1 )
+speed_scale = 1.5
+playing = true
+
+[node name="BoostTimer" type="Timer" parent="."]
+wait_time = 1.5
 [connection signal="finished" from="BingSound" to="." method="_on_BingSound_finished"]
 [connection signal="timeout" from="UIStartTimer" to="." method="_on_UIStartTimer_timeout"]
 [connection signal="timeout" from="UIGapTimer" to="." method="_on_UIGapTimer_timeout" flags=6]
 [connection signal="timeout" from="UICountdownTimer" to="." method="_on_UICountdownTimer_timeout"]
+[connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
