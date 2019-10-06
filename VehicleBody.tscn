@@ -10,6 +10,7 @@
 [ext_resource path="res://237375__squareal__car-crash.wav" type="AudioStream" id=8]
 [ext_resource path="res://420998__eponn__boost.wav" type="AudioStream" id=9]
 [ext_resource path="res://VehicleCamera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://FancyEnvironment.tres" type="Environment" id=11]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
@@ -123,6 +124,7 @@ render_target_clear_mode = 2
 shadow_atlas_size = 100
 
 [node name="Camera" parent="VehicleBody/cambase/Viewport" instance=ExtResource( 10 )]
+environment = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
