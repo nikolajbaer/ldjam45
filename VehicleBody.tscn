@@ -114,11 +114,12 @@ stream = ExtResource( 8 )
 
 [node name="Viewport" type="Viewport" parent="VehicleBody/cambase"]
 size = Vector2( 1024, 300 )
+keep_3d_linear = true
 render_target_clear_mode = 2
 shadow_atlas_size = 100
 
 [node name="Camera" type="Camera" parent="VehicleBody/cambase/Viewport"]
-transform = Transform( -1, 3.24022e-08, -8.11963e-08, 0, 0.928777, 0.370638, 8.74228e-08, 0.370638, -0.928777, 0, 16.099, -20.2923 )
+transform = Transform( -1, 5.61943e-08, -6.69697e-08, 0, 0.766045, 0.642787, 8.74228e-08, 0.642787, -0.766045, -0.000795007, 9.99791, -10.0012 )
 current = true
 fov = 50.0
 far = 1000.0
