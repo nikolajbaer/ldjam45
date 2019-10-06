@@ -146,10 +146,11 @@ func set_checkpoint(c):
 		laps.append( OS.get_ticks_msec() ) # Todo save global time in seconds
 		var lap_time = (laps[len(laps) - 1] - laps[len(laps) - 2]) / 1000
 		if len(laps) > 1:
-			print( "Lap %s Complete" % len(laps) )
+			print( "Lap %s Complete" % (len(laps)-1) )
 			print("Lap Time %s seconds " % lap_time )
 		print("Lap %s Started" % len(laps) )
-		if best_lap == null or best_lap > lap_time:
+		if len(laps) > 1 and ( best_lap == null or best_lap > lap_time ):
+			print("Setting best lap from ",best_lap,lap_time)
 			best_lap = lap_time
 
 func _on_StartTimer_timeout():
