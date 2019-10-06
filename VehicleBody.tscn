@@ -8,7 +8,7 @@
 [ext_resource path="res://throttle-stem.wav" type="AudioStream" id=6]
 [ext_resource path="res://throttle-loop.wav" type="AudioStream" id=7]
 [ext_resource path="res://237375__squareal__car-crash.wav" type="AudioStream" id=8]
-[ext_resource path="res://Camera.gd" type="Script" id=9]
+[ext_resource path="res://VehicleCamera.tscn" type="PackedScene" id=9]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
@@ -118,12 +118,7 @@ keep_3d_linear = true
 render_target_clear_mode = 2
 shadow_atlas_size = 100
 
-[node name="Camera" type="Camera" parent="VehicleBody/cambase/Viewport"]
-transform = Transform( -1, 5.61943e-08, -6.69697e-08, 0, 0.766045, 0.642787, 8.74228e-08, 0.642787, -0.766045, -0.000795007, 9.99791, -10.0012 )
-current = true
-fov = 50.0
-far = 1000.0
-script = ExtResource( 9 )
+[node name="Camera" parent="VehicleBody/cambase/Viewport" instance=ExtResource( 9 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

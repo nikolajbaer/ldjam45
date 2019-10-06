@@ -16,6 +16,7 @@ var turbo_boost = 1 # Boost allowance per lap
 var boost_on = 0
 var BOOST = 5 # multiplier for boost
 var BOOST_TIME = 1 # seconds of boost
+var finished
 
 signal countdown_started
 
@@ -53,6 +54,7 @@ func _ready():
 	best_lap = null
 	initial_wheel_slip = lbackwheel.wheel_friction_slip
 	time_bonus = 0
+	finished = false
 
 func set_body_color(body_color):
 	var mat = $hearse.get_surface_material(0).duplicate()
@@ -214,3 +216,9 @@ func get_score():
 func _on_Camera_flyin_complete():
 	#timer.start()
 	emit_signal("countdown_started")
+
+func set_finished():
+	print(player,"Finished!")
+	finished = true
+	active = false
+

@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://PlayerHUD.gd" type="Script" id=1]
 [ext_resource path="res://bong.ogg" type="AudioStream" id=2]
 [ext_resource path="res://bing.ogg" type="AudioStream" id=3]
 [ext_resource path="res://music.ogg" type="AudioStream" id=4]
-[ext_resource path="res://countdown_3.png" type="Texture" id=5]
-[ext_resource path="res://CountdownSprite.gd" type="Script" id=6]
-[ext_resource path="res://fastForward.png" type="Texture" id=7]
+[ext_resource path="res://fastForward.png" type="Texture" id=5]
+[ext_resource path="res://countdown_3.png" type="Texture" id=6]
+[ext_resource path="res://CountdownSprite.gd" type="Script" id=7]
+[ext_resource path="res://finished.png" type="Texture" id=8]
+[ext_resource path="res://winner.png" type="Texture" id=9]
 
 [node name="PlayerHUD" type="Control"]
 anchor_right = 1.0
@@ -68,15 +70,37 @@ stream = ExtResource( 4 )
 visible = false
 position = Vector2( 979.249, 30.32 )
 scale = Vector2( 0.344562, 0.27597 )
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 
 [node name="CountdownSprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 503.2, 149.6 )
-texture = ExtResource( 5 )
-script = ExtResource( 6 )
+texture = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="UICountdownTimer" type="Timer" parent="."]
 
+[node name="FinishedControl" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="finished" type="Sprite" parent="FinishedControl"]
+position = Vector2( 514.41, 104.747 )
+texture = ExtResource( 8 )
+
+[node name="score" type="Label" parent="FinishedControl"]
+margin_left = 429.132
+margin_top = 142.3
+margin_right = 577.132
+margin_bottom = 156.3
+text = "Score: "
+align = 1
+
+[node name="winner" type="Sprite" parent="FinishedControl"]
+visible = false
+position = Vector2( 516.07, 105.109 )
+texture = ExtResource( 9 )
 [connection signal="finished" from="BingSound" to="." method="_on_BingSound_finished"]
 [connection signal="timeout" from="UIStartTimer" to="." method="_on_UIStartTimer_timeout"]
 [connection signal="timeout" from="UIGapTimer" to="." method="_on_UIGapTimer_timeout" flags=6]
