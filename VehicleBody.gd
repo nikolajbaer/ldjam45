@@ -29,6 +29,7 @@ var checkpoint
 var laps = null
 var active = false
 var initial_wheel_slip
+var best_lap = null
 
 func _ready():
 	active = false
@@ -36,6 +37,7 @@ func _ready():
 	pickups = 0
 	checkpoint = null
 	laps = []
+	best_lap = null
 	initial_wheel_slip = lbackwheel.wheel_friction_slip
 	# Now goes from Camera Fly-In
 	#get_parent().get_node("StartTimer").start()
@@ -53,10 +55,8 @@ func set_player(p):
 		pjoy = 1
 
 func update_spray():
-	lspray.emitting =  (engine_force > 0 and lbackwheel.is_in_contact()) \
-						or lbackwheel.get_skidinfo() < 0.5
-	rspray.emitting =  (engine_force > 0 and rbackwheel.is_in_contact()) \
-						or rbackwheel.get_skidinfo() < 0.5
+	lspray.emitting =  lbackwheel.get_skidinfo() < 0.8
+	rspray.emitting =  rbackwheel.get_skidinfo() < 0.8
 	
 func reset_position():
 	active = false
@@ -149,6 +149,8 @@ func set_checkpoint(c):
 			print( "Lap %s Complete" % len(laps) )
 			print("Lap Time %s seconds " % lap_time )
 		print("Lap %s Started" % len(laps) )
+		if best_lap == null or best_lap > lap_time:
+			best_lap = lap_time
 
 func _on_StartTimer_timeout():
 	print("Activating Player "+player)
