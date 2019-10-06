@@ -16,23 +16,34 @@ margin_top = -300.0
 margin_right = 3.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 84.0
+margin_right = 86.0
 margin_bottom = 300.0
 
 [node name="Pickups" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_right = 84.0
+margin_right = 86.0
 margin_bottom = 14.0
 text = "Junk: Nothing"
 
 [node name="Lap" type="Label" parent="HBoxContainer/VBoxContainer"]
 margin_top = 18.0
-margin_right = 84.0
+margin_right = 86.0
 margin_bottom = 32.0
-text = "Lap Count"
+text = "Current Lap: -"
 
 [node name="Bestlap" type="Label" parent="HBoxContainer/VBoxContainer"]
 margin_top = 36.0
-margin_right = 84.0
-margin_bottom = 67.0
-text = "Best Lap
-"
+margin_right = 86.0
+margin_bottom = 50.0
+text = "Best Lap: -"
+
+[node name="Elapsed" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 86.0
+margin_bottom = 68.0
+text = "Elapsed: -"
+
+[node name="Score" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 86.0
+margin_bottom = 86.0
+text = "Score: -"

@@ -131,4 +131,5 @@ script = ExtResource( 9 )
 wait_time = 3.0
 one_shot = true
 [connection signal="body_entered" from="VehicleBody" to="VehicleBody" method="_on_VehicleBody_body_entered"]
+[connection signal="lap_completed" from="VehicleBody" to="." method="_on_VehicleBody_lap_completed"]
 [connection signal="timeout" from="StartTimer" to="VehicleBody" method="_on_StartTimer_timeout"]

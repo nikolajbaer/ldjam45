@@ -12,7 +12,6 @@ var viewport_sprite1
 var viewport_sprite2
 
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(Input.get_connected_joypads())

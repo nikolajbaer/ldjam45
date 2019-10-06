@@ -21,6 +21,12 @@ onready var lspray = $BackVehicleWheelL/LSpray
 onready var rbackwheel = $BackVehicleWheelR
 onready var rspray = $BackVehicleWheelR/RSpray
 
+signal lap_completed
+signal pickups_processed
+
+var PICKUP_TIME_BONUS = 2.0
+var time_bonus
+
 export var engine_force_value = 400
 
 var player
@@ -39,8 +45,7 @@ func _ready():
 	laps = []
 	best_lap = null
 	initial_wheel_slip = lbackwheel.wheel_friction_slip
-	# Now goes from Camera Fly-In
-	#get_parent().get_node("StartTimer").start()
+	time_bonus = 0
 
 func set_body_color(body_color):
 	var mat = $hearse.get_surface_material(0).duplicate()
@@ -135,6 +140,14 @@ func add_pickup(area):
 	pickups += 1
 	mass = start_mass + pickups
 
+func process_pickups():
+	var bonus = pickups * PICKUP_TIME_BONUS
+	print(player,"earned bonus ",bonus)
+	time_bonus += bonus
+	pickups = 0
+	mass = start_mass
+	emit_signal("pickups_processed",bonus)
+
 func set_checkpoint(c):
 	if checkpoint != null and \
 		( not ( c.sequence == 0 and checkpoint.sequence == 9 ) ) and \
@@ -144,15 +157,35 @@ func set_checkpoint(c):
 	checkpoint = c
 	if checkpoint.sequence == 0:
 		laps.append( OS.get_ticks_msec() ) # Todo save global time in seconds
-		var lap_time = (laps[len(laps) - 1] - laps[len(laps) - 2]) / 1000
+		var lap_time = (laps[len(laps) - 1] - laps[len(laps) - 2]) / 1000.0
 		if len(laps) > 1:
-			print( "Lap %s Complete" % (len(laps)-1) )
-			print("Lap Time %s seconds " % lap_time )
+			lap_complete(len(laps)-1, lap_time)
 		print("Lap %s Started" % len(laps) )
-		if len(laps) > 1 and ( best_lap == null or best_lap > lap_time ):
-			print("Setting best lap from ",best_lap,lap_time)
-			best_lap = lap_time
+
+func lap_complete(lap_num,lap_time):
+	print(player,"Lap %s Complete" % (len(laps)-1) )
+	print(player,"Lap Time %s seconds " % lap_time )
+	emit_signal("lap_completed",lap_num,lap_time)
+	process_pickups()
+
+	if len(laps) > 1 and ( best_lap == null or best_lap > lap_time ):
+		print(player,"Setting best lap from ",best_lap,lap_time)
+		best_lap = lap_time
 
 func _on_StartTimer_timeout():
 	print("Activating Player "+player)
 	active = true
+
+func current_lap():
+	return len(laps)
+
+func laps_completed():
+	if len(laps) > 1:
+		return len(laps) -1
+	return 0
+
+func get_elapsed():
+	return ((OS.get_ticks_msec() - laps[0]) / 1000.0)
+
+func get_score():
+	return get_elapsed() - time_bonus
