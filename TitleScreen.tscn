@@ -66,7 +66,8 @@ margin_top = 164.936
 margin_right = 172.0
 margin_bottom = 195.936
 text = "Player 1
-Press W,A,S,D or Joystick Button to Join"
+Use  W,A,S,D or Joystick 1
+Q / E / R for boost, ebrake and reset"
 align = 1
 
 [node name="Joined" type="Label" parent="Control/Player1"]
@@ -88,12 +89,13 @@ position = Vector2( 62.6, 84.6 )
 texture = ExtResource( 4 )
 
 [node name="Prompt" type="Label" parent="Control/Player2"]
-margin_left = -54.0
-margin_top = 160.0
-margin_right = 196.0
-margin_bottom = 191.0
+margin_left = -70.2949
+margin_top = 154.574
+margin_right = 204.705
+margin_bottom = 202.574
 text = "Player 2
-Press I,J,K,L or Joystick Button to Join"
+Use I,J,K,L or Joystick 2
+U / O / P for boost, ebrake and reset"
 align = 1
 
 [node name="Joined" type="Label" parent="Control/Player2"]
