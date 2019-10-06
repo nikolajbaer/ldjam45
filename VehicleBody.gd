@@ -18,6 +18,7 @@ var BOOST = 5 # multiplier for boost
 var BOOST_TIME = 1 # seconds of boost
 var finished
 var start_time = null
+var finish_time = null
 
 signal countdown_started
 
@@ -31,7 +32,7 @@ onready var rspray = $BackVehicleWheelR/RSpray
 onready var timer = get_parent().get_node("StartTimer")
 
 signal lap_completed
-signal pickups_processed
+signal pickups_procesjsed
 
 var PICKUP_TIME_BONUS = 2.0
 var time_bonus
@@ -168,7 +169,7 @@ func add_pickup(area):
 func process_pickups():
 	var bonus = pickups * PICKUP_TIME_BONUS
 	print(player,"earned bonus ",bonus)
-	time_bonus += bonus
+	time_bonus += bonus 
 	pickups = 0
 	mass = start_mass
 	emit_signal("pickups_processed",bonus)
@@ -190,8 +191,8 @@ func set_checkpoint(c):
 func lap_complete(lap_num,lap_time):
 	print(player,"Lap %s Complete" % (len(laps)-1) )
 	print(player,"Lap Time %s seconds " % lap_time )
-	emit_signal("lap_completed",lap_num,lap_time)
 	process_pickups()
+	emit_signal("lap_completed",lap_num,lap_time)
 		
 	
 	if len(laps) > 1 and ( best_lap == null or best_lap > lap_time ):
@@ -201,7 +202,8 @@ func lap_complete(lap_num,lap_time):
 func _on_StartTimer_timeout():
 	print("Activating Player "+player)
 	active = true
-	start_time = OS.get_ticks_msec()
+	if start_time == null:
+		start_time = OS.get_ticks_msec()
 
 func current_lap():
 	return len(laps)
@@ -213,7 +215,7 @@ func laps_completed():
 
 func get_elapsed():
 	if finished:
-		return (laps[len(laps)-1] - start_time)/1000.0
+		return (finish_time - start_time)/1000.0
 	return ((OS.get_ticks_msec() - start_time) / 1000.0)
 
 func get_score():
@@ -226,6 +228,7 @@ func set_finished():
 	print(player,"Finished!")
 	finished = true
 	active = false
+	finish_time = OS.get_ticks_msec()
 
 func current_speed():
 	return transform.basis.xform_inv(linear_velocity).x
@@ -237,3 +240,4 @@ func boost_activated():
 	get_parent().get_node("BoostRechargeTimer").start()
 	if not $BoostSound.playing:
 		$BoostSound.play()
+
