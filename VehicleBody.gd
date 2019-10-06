@@ -80,7 +80,7 @@ func _physics_process(delta):
 		throttle_loop.stop()
 		throttle_up = true
 		if not idle_sound.playing:
-			pass #idle_sound.play()
+			idle_sound.play()
 			
 	if Input.is_action_pressed(player+"_brake") or updown < 0:
 		if (fwd_mps >= -1):

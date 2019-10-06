@@ -97,6 +97,8 @@ use_as_steering = true
 
 [node name="EngineIdle" type="AudioStreamPlayer" parent="VehicleBody"]
 stream = ExtResource( 5 )
+volume_db = -1.0
+pitch_scale = 0.69
 
 [node name="EngineThrottleStart" type="AudioStreamPlayer" parent="VehicleBody"]
 stream = ExtResource( 6 )
