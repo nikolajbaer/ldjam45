@@ -13,6 +13,8 @@ var throttle_down = false
 var pickups = 0
 var start_mass
 
+signal countdown_started
+
 onready var idle_sound = $EngineIdle
 onready var throttle_sound = $EngineThrottleStart
 onready var throttle_loop = $EngineThrottleLoop
@@ -20,6 +22,7 @@ onready var lbackwheel = $BackVehicleWheelL
 onready var lspray = $BackVehicleWheelL/LSpray
 onready var rbackwheel = $BackVehicleWheelR
 onready var rspray = $BackVehicleWheelR/RSpray
+onready var timer = get_parent().get_node("StartTimer")
 
 signal lap_completed
 signal pickups_processed
@@ -108,7 +111,8 @@ func _physics_process(delta):
 		throttle_loop.stop()
 		throttle_up = true
 		if not idle_sound.playing:
-			idle_sound.play()
+			#idle_sound.play()
+			pass
 			
 	if Input.is_action_pressed(player+"_brake") or Input.is_joy_button_pressed(pjoy,JOY_BUTTON_1):
 		if (fwd_mps >= -1):
@@ -189,3 +193,7 @@ func get_elapsed():
 
 func get_score():
 	return get_elapsed() - time_bonus
+
+func _on_Camera_flyin_complete():
+	timer.start()
+	emit_signal("countdown_started")
