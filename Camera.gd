@@ -12,10 +12,14 @@ var min_height = 0.5
 
 
 func _physics_process(dt):
-	var target = get_parent().get_parent().get_global_transform().origin
-	var pos = get_global_transform().origin
+	var vehicle_body = get_parent().get_parent().get_parent()
+	print(vehicle_body)
+	var target = vehicle_body.get_global_transform().origin
+	var pos = get_transform().origin
 	var up = Vector3(0, 1, 0)
 	target.y += 5
+	
+	
 	var delta = pos - target
 	
 	# Regular delta follow

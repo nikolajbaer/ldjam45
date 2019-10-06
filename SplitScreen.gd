@@ -3,21 +3,32 @@ extends Node2D
 var worldScene = preload("res://Game.tscn")
 var worldSceneInstance
 var camera1
-var camera2 
+var camera2
+var vehicle1
+var vehicle2 
 var viewport_sprite1
 var viewport_sprite2
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(Input.get_connected_joypads())
-	
+
 	worldSceneInstance = worldScene.instance();
 	self.add_child(worldSceneInstance);
-	
+
 	# Get the cameras
-	camera1 = worldSceneInstance.get_node("VehicleBody").get_camera()
-	camera2 = worldSceneInstance.get_node("VehicleBody2").get_camera()
-	
+	vehicle1 = worldSceneInstance.get_node("VehicleBody")
+	vehicle2 = worldSceneInstance.get_node("VehicleBody2")
+
+	camera1 = vehicle1.get_camera()
+	camera2 = vehicle2.get_camera()
+
+	camera1.set_transform(vehicle1.get_transform())
+	camera1.translate(Vector3(15.0, 20.0, -10.0))
+	camera2.set_transform(vehicle2.get_transform())
+	camera2.translate(Vector3(-15.0, 20.0, -10.0))
 	# Get the sprites
 	viewport_sprite1 = get_node("Player1")
 	viewport_sprite2 = get_node("Player2")
