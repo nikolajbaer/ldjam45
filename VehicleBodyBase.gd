@@ -23,3 +23,6 @@ func get_camera():
 
 func _on_VehicleBody_lap_completed(lap_num,lap_time):
 	emit_signal("lap_completed",lap_num,lap_time)
+
+func ready_to_go():
+	return camera.flying_in == false

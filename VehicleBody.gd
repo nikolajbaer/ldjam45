@@ -212,5 +212,5 @@ func get_score():
 	return get_elapsed() - time_bonus
 
 func _on_Camera_flyin_complete():
-	timer.start()
+	#timer.start()
 	emit_signal("countdown_started")

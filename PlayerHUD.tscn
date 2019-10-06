@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://PlayerHUD.gd" type="Script" id=1]
 [ext_resource path="res://bong.ogg" type="AudioStream" id=2]
 [ext_resource path="res://bing.ogg" type="AudioStream" id=3]
 [ext_resource path="res://music.ogg" type="AudioStream" id=4]
-[ext_resource path="res://fastForward.png" type="Texture" id=5]
+[ext_resource path="res://countdown_3.png" type="Texture" id=5]
+[ext_resource path="res://CountdownSprite.gd" type="Script" id=6]
+[ext_resource path="res://fastForward.png" type="Texture" id=7]
 
 [node name="PlayerHUD" type="Control"]
 anchor_right = 1.0
@@ -66,7 +68,16 @@ stream = ExtResource( 4 )
 visible = false
 position = Vector2( 979.249, 30.32 )
 scale = Vector2( 0.344562, 0.27597 )
+texture = ExtResource( 7 )
+
+[node name="CountdownSprite" type="Sprite" parent="."]
+position = Vector2( 503.2, 149.6 )
 texture = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="UICountdownTimer" type="Timer" parent="."]
+
 [connection signal="finished" from="BingSound" to="." method="_on_BingSound_finished"]
 [connection signal="timeout" from="UIStartTimer" to="." method="_on_UIStartTimer_timeout"]
 [connection signal="timeout" from="UIGapTimer" to="." method="_on_UIGapTimer_timeout" flags=6]
+[connection signal="timeout" from="UICountdownTimer" to="." method="_on_UICountdownTimer_timeout"]

@@ -14,5 +14,7 @@ func try_start():
 
 func start_game():
 	hud1._countdown_sounds()
-	
-		
+	hud1._countdown_graphics()
+	hud2._countdown_graphics()
+	$VehicleBody/VehicleBody.timer.start()
+	$VehicleBody2/VehicleBody.timer.start()
