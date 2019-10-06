@@ -89,10 +89,7 @@ func _physics_process(delta):
 	else:
 		steer_target = 0
 	
-	# Nope
-	var updown = 0 #Input.get_joy_axis(pjoy,JOY_AXIS_1)
-	
-	if Input.is_action_pressed(player+"_engine") or updown > 0:
+	if Input.is_action_pressed(player+"_engine") or Input.is_joy_button_pressed(pjoy, JOY_BUTTON_0):
 		engine_force = engine_force_value
 		idle_sound.stop()
 		if not throttle_sound.playing && throttle_up:
@@ -108,7 +105,7 @@ func _physics_process(delta):
 		if not idle_sound.playing:
 			idle_sound.play()
 			
-	if Input.is_action_pressed(player+"_brake") or updown < 0:
+	if Input.is_action_pressed(player+"_brake") or Input.is_joy_button_pressed(pjoy,JOY_BUTTON_1):
 		if (fwd_mps >= -1):
 			engine_force = -engine_force_value
 		else:
