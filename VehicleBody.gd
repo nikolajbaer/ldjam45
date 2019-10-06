@@ -10,6 +10,8 @@ var steer_target = 0
 var throttle_up = true
 var throttle_down = false
 
+var pickups = 0
+var start_mass
 
 onready var idle_sound = $EngineIdle
 onready var throttle_sound = $EngineThrottleStart
@@ -23,6 +25,10 @@ export var engine_force_value = 400
 
 var player
 var pjoy
+
+func _ready():
+	start_mass = mass
+	pickups = 0
 
 func set_body_color(body_color):
 	var mat = $hearse.get_surface_material(0).duplicate()
@@ -107,3 +113,7 @@ func _on_VehicleBody_body_entered(body):
 	if body.get_collision_layer_bit(1):
 		print("Bang")
 		$CrashSound.play()
+
+func add_pickup(area):
+	pickups += 1
+	mass = start_mass + pickups
