@@ -9,9 +9,10 @@ onready var bestlap = $Bestlap
 onready var elapsed = $Elapsed
 onready var score = $Score
 onready var turbo_available = $fastForward
-
+onready var speedometer = $Speedometer
 onready var starttimer = $UIStartTimer
 onready var gaptimer   = $UIGapTimer
+onready var boost = $boost
 
 onready var bongsound = $BongSound
 onready var bingsound = $BingSound
@@ -43,11 +44,12 @@ func _process(delta):
 			bestlap.text = "Best Lap: %s s" % vehicle.best_lap
 		else:
 			bestlap.text = " - "
-		if len(vehicle.laps) > 0:
+		if vehicle.start_time != null:
 			elapsed.text = "Elapsed: %s" % vehicle.get_elapsed()
 			score.text = "Score: %s" % vehicle.get_score()
 		turbo_available.visible = vehicle.turbo_boost > 0
-			
+		boost.visible = vehicle.boost_on > 0
+		speedometer.text = "%03d kmph" % int(vehicle.current_speed())
 
 func _on_UIStartTimer_timeout():
 	bongsound.stop()

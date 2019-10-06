@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://VehicleBodyBase.gd" type="Script" id=1]
 [ext_resource path="res://VehicleBody.gd" type="Script" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://throttle-stem.wav" type="AudioStream" id=6]
 [ext_resource path="res://throttle-loop.wav" type="AudioStream" id=7]
 [ext_resource path="res://237375__squareal__car-crash.wav" type="AudioStream" id=8]
-[ext_resource path="res://VehicleCamera.tscn" type="PackedScene" id=9]
+[ext_resource path="res://420998__eponn__boost.wav" type="AudioStream" id=9]
+[ext_resource path="res://VehicleCamera.tscn" type="PackedScene" id=10]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
@@ -110,6 +111,9 @@ pitch_scale = 0.7
 [node name="CrashSound" type="AudioStreamPlayer" parent="VehicleBody"]
 stream = ExtResource( 8 )
 
+[node name="BoostSound" type="AudioStreamPlayer" parent="VehicleBody"]
+stream = ExtResource( 9 )
+
 [node name="cambase" type="Spatial" parent="VehicleBody"]
 
 [node name="Viewport" type="Viewport" parent="VehicleBody/cambase"]
@@ -118,14 +122,19 @@ keep_3d_linear = true
 render_target_clear_mode = 2
 shadow_atlas_size = 100
 
-[node name="Camera" parent="VehicleBody/cambase/Viewport" instance=ExtResource( 9 )]
+[node name="Camera" parent="VehicleBody/cambase/Viewport" instance=ExtResource( 10 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="BoostRechargeTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
 [connection signal="body_entered" from="VehicleBody" to="VehicleBody" method="_on_VehicleBody_body_entered"]
 [connection signal="lap_completed" from="VehicleBody" to="." method="_on_VehicleBody_lap_completed"]
 [connection signal="flyin_complete" from="VehicleBody/cambase/Viewport/Camera" to="VehicleBody" method="_on_Camera_flyin_complete"]
 [connection signal="timeout" from="StartTimer" to="VehicleBody" method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="BoostRechargeTimer" to="VehicleBody" method="reset_turbo_boost"]

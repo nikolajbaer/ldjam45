@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://GroundMap.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Cone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Blob.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://FinishLine.tscn" type="PackedScene" id=7]
 
 [node name="GameRoot" type="Spatial"]
 script = ExtResource( 1 )
@@ -288,5 +289,8 @@ sequence = 8
 [node name="Checkpoint10" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( -3.93484, 0, -0.719063, 0, 4, 0, 0.719063, 0, -3.93484, -185.551, 0, 92.9803 )
 sequence = 9
+
+[node name="FinishLine" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.716291, 0, 0.697802, 0, 1, 0, -0.697802, 0, 0.716291, 71.9423, -0.000244141, -53.9963 )
 [connection signal="lap_completed" from="VehicleBody" to="." method="_on_VehicleBody_lap_completed"]
 [connection signal="lap_completed" from="VehicleBody2" to="." method="_on_VehicleBody_lap_completed"]

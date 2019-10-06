@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="CylinderMesh" id=1]
+
+[sub_resource type="CylinderShape" id=2]
+height = 11.654
+
+[sub_resource type="QuadMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.0313726, 0.968627, 0, 1 )
+
+[node name="LapMarker" type="StaticBody"]
+
+[node name="Pole" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 16.2752, 0, 0, 0, 1, 0, 15.9955, -19.724 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Pole2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 16.2752, 0, 0, 0, 1, 0, 15.9955, 18.781 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="PoleCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 2.64426, 0, 0, 0, 1, 0, 14.663, -19.6371 )
+shape = SubResource( 2 )
+
+[node name="PoleCollision2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 2.64426, 0, 0, 0, 1, 0, 14.663, 18.8679 )
+shape = SubResource( 2 )
+
+[node name="Banner" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 3.10706, 0, 38.0077, 0, -1.66137e-06, 0, 28.3862, 0.0718079 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
