@@ -3,6 +3,7 @@ extends Node2D
 var splitscreen = preload("res://SplitScreen.tscn")
 var player1 = false
 var player2 = false
+onready var instructions = $Instructions
 
 # TODO
 # https://docs.godotengine.org/en/3.1/getting_started/step_by_step/ui_main_menu.html
@@ -22,6 +23,13 @@ func player2_joined():
 	$Control/Player2/Prompt.visible = false
 	$Control/Player2/Joined.visible = true
 	player2 = true
+	
+func show_instructions():
+	instructions.show()
+	
+func hide_instructions():
+	instructions.hide()
+	
 
 func _input(event):
 	if event is InputEventKey:
@@ -36,3 +44,11 @@ func start_game():
 
 func _on_NewGameButton_pressed():
 	start_game()
+
+
+func _on_Instructions_pressed():
+	show_instructions()
+
+
+func _on_CloseButton_pressed():
+	hide_instructions()
