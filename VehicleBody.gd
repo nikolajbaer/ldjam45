@@ -30,6 +30,7 @@ onready var lspray = $BackVehicleWheelL/LSpray
 onready var rbackwheel = $BackVehicleWheelR
 onready var rspray = $BackVehicleWheelR/RSpray
 onready var timer = get_parent().get_node("StartTimer")
+onready var pickupsound = $PickupSound
 
 signal lap_completed
 signal pickups_procesjsed
@@ -163,6 +164,7 @@ func _on_VehicleBody_body_entered(body):
 		$CrashSound.play()
 
 func add_pickup(area):
+	pickupsound.play()
 	pickups += 1
 	mass = start_mass + pickups
 

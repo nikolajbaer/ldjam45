@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://GroundMap.tscn" type="PackedScene" id=2]
@@ -6,9 +6,7 @@
 [ext_resource path="res://Cone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Blob.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=6]
-[ext_resource path="res://VehicleCamera.tscn" type="PackedScene" id=7]
-[ext_resource path="res://FancyEnvironment.tres" type="Environment" id=8]
-[ext_resource path="res://FinishLine.tscn" type="PackedScene" id=9]
+[ext_resource path="res://FinishLine.tscn" type="PackedScene" id=7]
 
 [node name="GameRoot" type="Spatial"]
 script = ExtResource( 1 )
@@ -52,7 +50,6 @@ light_energy = 0.8
 shadow_enabled = true
 
 [node name="Blobs" type="Spatial" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="Blob" parent="Blobs" instance=ExtResource( 5 )]
@@ -251,7 +248,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -73.0157, 0, 136.007 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.4171, 0, 120.564 )
 
 [node name="Checkpoints" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 6 )]
 transform = Transform( 2.72349, 0, -2.92961, 0, 4, 0, 2.92961, 0, 2.72349, 76.7819, 0, -59.3683 )
@@ -292,13 +288,7 @@ sequence = 8
 transform = Transform( -3.93484, 0, -0.719063, 0, 4, 0, 0.719063, 0, -3.93484, -185.551, 0, 92.9803 )
 sequence = 9
 
-[node name="Camera" parent="." instance=ExtResource( 7 )]
-transform = Transform( -0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, -80, 100, 90 )
-environment = ExtResource( 8 )
-fov = 69.9
-is_trash = true
-
-[node name="FinishLine" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.716291, 0, 0.697802, 0, 1, 0, -0.697802, 0, 0.716291, 71.9423, -0.000244141, -53.9963 )
+[node name="FinishLine" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.716291, 0, 0.697802, 0, 1, 0, -0.697802, 0, 0.716291, 72.3757, -0.118938, -53.8955 )
 [connection signal="lap_completed" from="VehicleBody" to="." method="_on_VehicleBody_lap_completed"]
 [connection signal="lap_completed" from="VehicleBody2" to="." method="_on_VehicleBody_lap_completed"]
