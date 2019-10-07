@@ -14,8 +14,8 @@ var pickups = 0
 var start_mass
 var turbo_boost = 1 # Boost allowance per lap
 var boost_on = 0
-var BOOST = 5 # multiplier for boost
-var BOOST_TIME = 1 # seconds of boost
+var BOOST = 3 # multiplier for boost
+var BOOST_TIME = 2 # seconds of boost
 var finished
 var start_time = null
 var finish_time = null
@@ -87,6 +87,9 @@ func _physics_process(delta):
 	if not active: 
 		engine_force = 0
 		brake = 2
+		throttle_sound.stop()
+		lspray.emitting = false
+		rspray.emitting = false
 		return
 	
 	var fwd_mps = transform.basis.xform_inv(linear_velocity).x
@@ -102,14 +105,13 @@ func _physics_process(delta):
 		rbackwheel.wheel_friction_slip = initial_wheel_slip
 
 	if Input.is_action_pressed(player+"_boost"):
-		if boost_on > 0:
-			boost_on -= delta
-		elif turbo_boost > 0:
+		if boost_on <= 0 and turbo_boost > 0:
 			turbo_boost -= 1
 			boost_on = BOOST_TIME
 			boost_activated()
-	else:
-		boost_on = 0
+	
+	if boost_on > 0: 
+		boost_on -= delta
 
 	if Input.is_action_pressed(player+"_left"):
 		steer_target = STEER_LIMIT * Input.get_action_strength(player+"_left")
@@ -145,6 +147,13 @@ func _physics_process(delta):
 	else:
 		brake = 0.0
 	
+	if lbackwheel.get_skidinfo() < 0.8 or rbackwheel.get_skidinfo() < 0.8:
+		if not $SkidSound.playing:
+			$SkidSound.play()
+	else:
+		$SkidSound.stop()
+	
+	
 	if steer_target < steer_angle:
 		steer_angle -= STEER_SPEED * delta
 		if steer_target > steer_angle:
@@ -159,8 +168,8 @@ func _physics_process(delta):
 
 
 func _on_VehicleBody_body_entered(body):
-	if body.get_collision_layer_bit(1):
-		print("Bang")
+	var v = linear_velocity.length()
+	if body.get_collision_layer_bit(1) and v > 30 and not $CrashSound.playing:
 		$CrashSound.play()
 
 func add_pickup(area):
@@ -242,4 +251,5 @@ func boost_activated():
 	get_parent().get_node("BoostRechargeTimer").start()
 	if not $BoostSound.playing:
 		$BoostSound.play()
+
 
