@@ -96,9 +96,9 @@ texture = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 140.765
-margin_top = -16.3986
+margin_top = -15.7541
 margin_right = 1164.76
-margin_bottom = 583.601
+margin_bottom = 584.246
 rect_scale = Vector2( 0.998826, 0.999808 )
 
 [node name="title" type="Sprite" parent="Control"]

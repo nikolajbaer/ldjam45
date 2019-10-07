@@ -17,10 +17,11 @@ transform = Transform( 50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0 )
 
 [node name="VehicleBody" parent="." instance=ExtResource( 3 )]
 transform = Transform( -0.781438, 0, 0.623983, 0, 1, 0, -0.623983, 0, -0.781438, 13.0843, 5.46818, 4.1948 )
+body_color = Color( 257, 0, 0, 1 )
 
 [node name="VehicleBody2" parent="." instance=ExtResource( 3 )]
 transform = Transform( -0.842223, 0, 0.53913, 0, 1, 0, -0.53913, 0, -0.842223, 38.1992, 5.46818, 20.831 )
-body_color = Color( 0.172549, 1, 0, 1 )
+body_color = Color( 0.3125, 0, 1, 1 )
 player = "p2"
 
 [node name="Cones" type="Spatial" parent="."]
