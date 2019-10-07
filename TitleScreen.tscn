@@ -12,7 +12,7 @@
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Music Fade In"
 length = 30.0
 loop = true
@@ -53,8 +53,7 @@ tracks/2/keys = {
 "values": [ true, false, true, false, true, false, true, false, true, false, true, false, true ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Player1Joy"
+[sub_resource type="Animation" id=3]
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control/Player1/gamepad1:modulate")
@@ -69,8 +68,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.0313726, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Player2Joy"
+[sub_resource type="Animation" id=4]
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control/Player1/gamepad2:modulate")
@@ -97,14 +95,15 @@ texture = ExtResource( 2 )
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 140.121
-margin_top = -17.0429
-margin_right = 1164.12
-margin_bottom = 582.957
+margin_left = 140.765
+margin_top = -16.3986
+margin_right = 1164.76
+margin_bottom = 583.601
 rect_scale = Vector2( 0.998826, 0.999808 )
 
 [node name="title" type="Sprite" parent="Control"]
-position = Vector2( 514.6, 152.6 )
+position = Vector2( 519.761, 158.518 )
+scale = Vector2( 0.694112, 0.694112 )
 texture = ExtResource( 3 )
 
 [node name="NewGameButton" type="Button" parent="Control"]
@@ -194,15 +193,15 @@ margin_right = 184.988
 margin_bottom = 48.3771
 
 [node name="warning" type="Sprite" parent="JoystickWarning"]
-position = Vector2( 299.42, 32.6064 )
+position = Vector2( 38.4428, 5.54211 )
 scale = Vector2( 0.612483, 0.519478 )
 texture = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="JoystickWarning"]
-margin_left = 338.69
-margin_top = 29.4513
-margin_right = 732.69
-margin_bottom = 43.4513
+margin_left = 77.7128
+margin_top = 1.74261
+margin_right = 522.713
+margin_bottom = 15.7426
 text = "This game is best played with 2 players on gamepads on a big screen!"
 
 [node name="Instructions" type="Sprite" parent="."]
@@ -219,9 +218,9 @@ margin_bottom = -170.404
 text = "Close"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/Music Fade In" = SubResource( 4 )
-anims/Player1Joy = SubResource( 2 )
-anims/Player2Joy = SubResource( 3 )
+"anims/Music Fade In" = SubResource( 2 )
+anims/Player1Joy = SubResource( 3 )
+anims/Player2Joy = SubResource( 4 )
 
 [node name="Button" type="Button" parent="."]
 margin_left = 580.503
