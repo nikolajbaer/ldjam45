@@ -48,6 +48,9 @@ var active = false
 var initial_wheel_slip
 var best_lap = null
 
+var brake_mat1 = null
+var brake_mat2 = null
+
 func _ready():
 	active = false
 	start_mass = mass
@@ -58,6 +61,10 @@ func _ready():
 	initial_wheel_slip = lbackwheel.wheel_friction_slip
 	time_bonus = 0
 	finished = false
+	brake_mat1 = $hearse.get_surface_material(5)
+	brake_mat2 = brake_mat1.duplicate()
+	brake_mat2.emission_enabled = false
+	$hearse.set_surface_material(5,brake_mat2)
 
 func set_body_color(body_color):
 	var mat = $hearse.get_surface_material(0).duplicate()
@@ -70,6 +77,12 @@ func set_player(p):
 		pjoy = 0
 	elif p == "p2":
 		pjoy = 1
+
+func brakelights(on):
+	if on:
+		$hearse.set_surface_material(5, brake_mat1)
+	else:
+		$hearse.set_surface_material(5, brake_mat2)
 
 func update_spray():
 	lspray.emitting =  (lbackwheel.get_skidinfo() < 0.8 or boost_on > 0)
@@ -140,11 +153,13 @@ func _physics_process(delta):
 			pass
 			
 	if Input.is_action_pressed(player+"_brake") or Input.is_joy_button_pressed(pjoy,JOY_BUTTON_1):
+		brakelights(true)
 		if (fwd_mps >= -1):
 			engine_force = -engine_force_value
 		else:
 			brake = 5
 	else:
+		brakelights(false)
 		brake = 0.0
 	
 	if lbackwheel.get_skidinfo() < 0.8 or rbackwheel.get_skidinfo() < 0.8:
