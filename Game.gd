@@ -10,7 +10,7 @@ onready var player1 = $VehicleBody/VehicleBody
 onready var player2 = $VehicleBody2/VehicleBody
 
 func _ready():
-	pass
+	$cheering.play()
 
 func try_start():
 	if mode =="pvp":

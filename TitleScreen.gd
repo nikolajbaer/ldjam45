@@ -14,7 +14,7 @@ onready var instructions = $Instructions
 func _ready():
 	if len(Input.get_connected_joypads()) < 2:
 		$JoystickWarning.visible = true
-		
+	$AnimationPlayer.play("Music Fade In")		
 
 func player1_joined():
 	$Control/Player1/Prompt.visible = false
@@ -65,3 +65,7 @@ func _on_CloseButton_pressed():
 
 func _on_TopScoresButton_pressed():
 	get_tree().change_scene_to(timetrial)
+
+
+func _on_Button_pressed():
+		get_tree().change_scene("res://CreditsScene.tscn")

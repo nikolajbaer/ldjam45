@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://GroundMap.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Blob.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://FinishLine.tscn" type="PackedScene" id=7]
+[ext_resource path="res://481776__gregorquendel__crowd-cheering-strong-cheering-1.ogg" type="AudioStream" id=8]
 
 [node name="GameRoot" type="Spatial"]
 script = ExtResource( 1 )
@@ -291,5 +292,8 @@ sequence = 9
 
 [node name="FinishLine" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.716291, 0, 0.697802, 0, 1, 0, -0.697802, 0, 0.716291, 72.3757, -0.118938, -53.8955 )
+
+[node name="cheering" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 [connection signal="lap_completed" from="VehicleBody" to="." method="_on_VehicleBody_lap_completed"]
 [connection signal="lap_completed" from="VehicleBody2" to="." method="_on_VehicleBody_lap_completed"]

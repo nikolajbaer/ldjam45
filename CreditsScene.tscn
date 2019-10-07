@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CreditsScene.gd" type="Script" id=1]
+
+[node name="CreditsScene" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 244.912
+margin_top = 47.2773
+margin_right = 788.912
+margin_bottom = 480.277
+text = "Many Thanks to the Amazing Work by:
+
+The Godot Engine Team
+LD Jam Team
+The Blender Team
+
+Credits to works used in this game:
+
+Sounds Used (edited from originals):
+https://freesound.org/people/audible-edge/sounds/71741/
+https://freesound.org/people/Eponn/sounds/420998/
+https://freesound.org/people/squareal/sounds/237375/
+https://freesound.org/people/mhad/sounds/390795/
+https://freesound.org/people/GregorQuendel/sounds/481776/
+
+Music:
+TODO
+
+3D Car Model (stretched):
+TODO
+
+All other assets and game by:
+Kevin Mooney - github.com/kmooney
+Nikolaj Baer - github.com/nikolajbaer
+"
+align = 1
+
+[node name="Button" type="Button" parent="."]
+margin_left = 458.047
+margin_top = 476.648
+margin_right = 585.047
+margin_bottom = 513.648
+text = "Back"
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
