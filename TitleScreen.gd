@@ -1,8 +1,11 @@
 extends Node2D
 
 var splitscreen = preload("res://SplitScreen.tscn")
+var timetrial = preload("res://TimeTrial.tscn")
+
 var player1 = false
 var player2 = false
+
 onready var instructions = $Instructions
 
 # TODO
@@ -38,6 +41,12 @@ func _input(event):
 			player1_joined()
 		elif e.pressed and e.scancode in [KEY_I,KEY_J,KEY_K,KEY_L]:
 			player2_joined()
+	elif event is InputEventJoypadButton:
+		var e = event as InputEventJoypadButton
+		if e.device == 0:
+			$AnimationPlayer.play("Player1Joy")
+		elif e.device == 1:
+			$AnimationPlayer.play("Player2Joy")
 
 func start_game():
 	get_tree().change_scene_to(splitscreen)
@@ -52,3 +61,7 @@ func _on_Instructions_pressed():
 
 func _on_CloseButton_pressed():
 	hide_instructions()
+
+
+func _on_TopScoresButton_pressed():
+	get_tree().change_scene_to(timetrial)

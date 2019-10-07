@@ -82,3 +82,6 @@ func set_winner():
 
 func _on_BoostTimer_timeout():
 	boost.visible = false
+	
+func announce_best_lap(time):
+	$AnimationPlayer.play("best_lap")

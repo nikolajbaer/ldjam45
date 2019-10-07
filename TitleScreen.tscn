@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://title.png" type="Texture" id=2]
@@ -8,6 +8,38 @@
 [ext_resource path="res://instructions.png" type="Texture" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Player1Joy"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Player1/gamepad1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.34, 0.989315 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0313726, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Player2Joy"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Player1/gamepad2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.34, 0.989315 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0313726, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( -134.678, 25.7756 )
@@ -32,7 +64,7 @@ margin_top = 213.0
 margin_right = 660.0
 margin_bottom = 256.0
 rect_pivot_offset = Vector2( 176.08, 18.4165 )
-text = "New Game"
+text = "Player Vs Player"
 
 [node name="TopScoresButton" type="Button" parent="Control"]
 margin_left = 347.0
@@ -40,7 +72,7 @@ margin_top = 271.0
 margin_right = 659.0
 margin_bottom = 316.0
 rect_pivot_offset = Vector2( 176.08, 18.4165 )
-text = "Top Scores"
+text = "Time Trial"
 
 [node name="Instructions" type="Button" parent="Control"]
 margin_left = 346.067
@@ -136,6 +168,11 @@ margin_top = -190.404
 margin_right = 303.467
 margin_bottom = -170.404
 text = "Close"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Player1Joy = SubResource( 2 )
+anims/Player2Joy = SubResource( 3 )
 [connection signal="pressed" from="Control/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="Control/TopScoresButton" to="." method="_on_TopScoresButton_pressed"]
 [connection signal="pressed" from="Control/Instructions" to="." method="_on_Instructions_pressed"]
 [connection signal="pressed" from="Instructions/CloseButton" to="." method="_on_CloseButton_pressed"]
