@@ -9,7 +9,7 @@ script = ExtResource( 1 )
 margin_left = 244.912
 margin_top = 47.2773
 margin_right = 788.912
-margin_bottom = 480.277
+margin_bottom = 520.277
 text = "Many Thanks to the Amazing Work by:
 
 The Godot Engine Team
@@ -25,11 +25,14 @@ https://freesound.org/people/squareal/sounds/237375/
 https://freesound.org/people/mhad/sounds/390795/
 https://freesound.org/people/GregorQuendel/sounds/481776/
 
-Music:
-TODO
+Music is \"Fighting Time\" from GAME JAM VOL2!!! 
+by Loyalty Freak Music
+https://chezmonplaisir.bandcamp.com
 
-3D Car Model (stretched):
-TODO
+3D Car Model is from \"63 lowpoly vehicles\" 
+by racoonmedia
+http://www.cgtrader.com/3d-models/vehicle/other/63-lowpoly-vehicles
+
 
 All other assets and game by:
 Kevin Mooney - github.com/kmooney
@@ -39,8 +42,8 @@ align = 1
 
 [node name="Button" type="Button" parent="."]
 margin_left = 458.047
-margin_top = 476.648
+margin_top = 526.266
 margin_right = 585.047
-margin_bottom = 513.648
+margin_bottom = 563.266
 text = "Back"
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
