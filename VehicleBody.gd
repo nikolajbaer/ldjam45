@@ -106,10 +106,23 @@ func _physics_process(delta):
 		return
 	
 	var fwd_mps = transform.basis.xform_inv(linear_velocity).x
-
-	if Input.is_action_pressed(player+"_reset") or translation.y < -50:
+	
+	if Input.is_action_pressed(player+"_reset"):
 		reset_position()
-
+		
+	# We have fallen off the map!
+	if translation.y < -50:
+		# Move back on to map
+		if checkpoint != null:
+			translation.x = checkpoint.translation.x
+			translation.z = checkpoint.translation.z
+			translation.y = 5
+		else:
+			translation.x = 0
+			translation.y = 0
+			translation.z = 0
+		reset_position()
+		
 	if Input.is_action_pressed(player+"_ebrake"):
 		lbackwheel.wheel_friction_slip = 0.4 * initial_wheel_slip
 		rbackwheel.wheel_friction_slip = 0.4 * initial_wheel_slip

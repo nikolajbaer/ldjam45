@@ -50,6 +50,7 @@ light_energy = 0.8
 shadow_enabled = true
 
 [node name="Blobs" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="Blob" parent="Blobs" instance=ExtResource( 5 )]
