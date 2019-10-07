@@ -1,7 +1,7 @@
 extends Spatial
 
 
-export var lap_count = 1
+export var lap_count = 3
 var hud1
 var hud2
 
