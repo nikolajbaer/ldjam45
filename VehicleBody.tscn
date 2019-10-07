@@ -78,7 +78,6 @@ material/5 = SubResource( 6 )
 
 [node name="BackVehicleWheelL" parent="VehicleBody" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77933, -0.369889, -1.65871 )
-visible = false
 
 [node name="LSpray" type="Particles" parent="VehicleBody/BackVehicleWheelL"]
 transform = Transform( 1, 0, 0, 0, -0.953508, 0.301368, 0, -0.301368, -0.953508, -0.00382018, -0.696151, -0.93293 )

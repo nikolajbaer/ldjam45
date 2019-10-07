@@ -10,7 +10,7 @@
 [ext_resource path="res://finished.png" type="Texture" id=8]
 [ext_resource path="res://winner.png" type="Texture" id=9]
 [ext_resource path="res://boost.png" type="Texture" id=10]
-[ext_resource path="res://hud_bonus.png" type="Texture" id=11]
+[ext_resource path="res://best_lap.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -145,7 +145,7 @@ texture = ExtResource( 10 )
 visible = false
 position = Vector2( 517.885, 79.3304 )
 frames = SubResource( 1 )
-frame = 2
+frame = 3
 speed_scale = 1.5
 playing = true
 
@@ -154,6 +154,8 @@ wait_time = 1.5
 
 [node name="best_lap" type="Sprite" parent="."]
 visible = false
+position = Vector2( 307.547, 117.145 )
+scale = Vector2( 0.410434, 0.566531 )
 texture = ExtResource( 11 )
 offset = Vector2( 512, 300 )
 
